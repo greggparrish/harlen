@@ -1,13 +1,10 @@
 /* PRIMARY BRANDING  */
-$dsi_logo: 'Poiret One', sans-serif;
 
 a {
-  color: $dsi_baby_blue;
   text-decoration: none;
   transition: color 0.3s ease;
   &:hover, &:focus, &:active {
     text-decoration: none;
-    color: $dsi_lt_blue;
   }
 }
 
@@ -18,25 +15,4 @@ h1 {
   font-weight: 700;
   letter-spacing: 1px;
   color: $white;
-  &:after {
-    background: none repeat scroll 0 0 $white;
-    bottom: -10px;
-    content: "";
-    display: block;
-    height: 2px;
-    position: relative;
-    width: 50px;
-  }
-  &.bb {
-    color: $dsi_baby_blue;
-    &:after {
-      background: none repeat scroll 0 0 $dsi_baby_blue;
-    }
-  }
-  &.orange {
-    color: $dsi_orange;
-    &:after {
-      background: none repeat scroll 0 0 $dsi_orange;
-    }
-  }
 }

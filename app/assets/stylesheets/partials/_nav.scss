@@ -1,0 +1,10 @@
+nav.navbar {
+  background: $black;
+  .container {
+    .dropdown-toggle {
+      &:after {
+        border: 0;
+      }
+    }
+  }
+}

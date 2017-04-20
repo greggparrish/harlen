@@ -1,4 +1,4 @@
-%nav.navbar.navbar-toggleable-md.navbar-inverse
+%nav.navbar.navbar-toggleable-md
   .container
     %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
@@ -6,10 +6,16 @@
       = link_to "HARLEN", root_path
     #navbarSupportedContent.collapse.navbar-collapse
       %ul.navbar-nav.ml-auto
-        = nav_link "DISCOVER", about_path
-        = nav_link "COLLECTION", about_path
-        = nav_link "NEWS", about_path
-        = nav_link "VITAE", genres_path
-        = nav_link "ACCOUNT", about_path
-        = nav_link "CART", about_path
+        %li.dropdown.nav-item
+          %a.nav-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            DISCOVER
+          %ul.dropdown-menu{:role => "menu"}
+            = nav_link "CREATION", creation_path
+            = nav_link "STORY", story_path
+            = nav_link "PHILANTHROPY", philanthropy_path
+        = nav_link "COLLECTION", root_path
+        = nav_link "NEWS", root_path
+        = nav_link "STORIES", root_path
+        = nav_link "ACCOUNT", root_path
+        = nav_link "CART", root_path
 
