@@ -1,0 +1,15 @@
+%nav.navbar.navbar-toggleable-md.navbar-inverse
+  .container
+    %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    .navbar-brand
+      = link_to "HARLEN", root_path
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        = nav_link "DISCOVER", about_path
+        = nav_link "COLLECTION", about_path
+        = nav_link "NEWS", about_path
+        = nav_link "VITAE", genres_path
+        = nav_link "ACCOUNT", about_path
+        = nav_link "CART", about_path
+
