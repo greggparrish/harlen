@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Orientation:
+  = @productimage.orientation
+%p
+  %b Color:
+  = @productimage.color
+%p
+  %b Image:
+  = @productimage.image
+
+= link_to 'Edit', edit_productimage_path(@productimage)
+\|
+= link_to 'Back', productimages_path

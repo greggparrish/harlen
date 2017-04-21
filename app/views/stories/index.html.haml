@@ -2,8 +2,9 @@
   = link_to 'NEW', new_story_path()
   %h1 HARLEN STORIES
   %h3 -- THE HARLEN BLOG --
-  - @tags.each do |t|
-    %li= t.name
+  %ul.list-inline.taglist
+    - @tags.each do |t|
+      %li.list-inline-item= t.name
   .row
     - @stories.each do |s|
       .col-12.col-md-4

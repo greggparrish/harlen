@@ -1,0 +1,27 @@
+%h1 Listing colors
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Material
+      %th Hex1
+      %th Hex2
+      %th
+      %th
+      %th
+
+  %tbody
+    - @colors.each do |color|
+      %tr
+        %td= color.title
+        %td= color.material
+        %td= color.hex1
+        %td= color.hex2
+        %td= link_to 'Show', color
+        %td= link_to 'Edit', edit_color_path(color)
+        %td= link_to 'Destroy', color, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Color', new_color_path

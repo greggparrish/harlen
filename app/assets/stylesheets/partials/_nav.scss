@@ -1,10 +1,30 @@
 nav.navbar {
-  background: $black;
-  .container {
-    .dropdown-toggle {
-      &:after {
-        border: 0;
-      }
-    }
-  }
+	background: $black;
+	.container {
+		.dropdown-toggle {
+			&:after {
+				border: 0;
+			}
+		}
+	}
+	.container > button {
+		border: 1px solid $white;
+	}
 }
+
+li.dropdown {
+	color: #ca0000;
+	.dropdown-menu {
+		visibility: hidden;
+		opacity: 0;
+    transition: all 0.3s;
+	}
+	&.show {
+		.dropdown-menu {
+			visibility: visible;
+			opacity: 1;
+      transition: all 0.3s;
+		}
+	}
+}
+

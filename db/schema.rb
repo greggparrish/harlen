@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170421032614) do
+ActiveRecord::Schema.define(version: 20170421170618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,35 @@ ActiveRecord::Schema.define(version: 20170421032614) do
     t.index ["type"], name: "index_ckeditor_assets_on_type", using: :btree
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.string   "title"
+    t.string   "material"
+    t.string   "hex1"
+    t.string   "hex2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "productimages", force: :cascade do |t|
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.index ["color_id"], name: "index_productimages_on_color_id", using: :btree
+    t.index ["product_id"], name: "index_productimages_on_product_id", using: :btree
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.decimal  "price"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "slug"
+    t.index ["slug"], name: "index_products_on_slug", unique: true, using: :btree
+  end
+
   create_table "stories", force: :cascade do |t|
     t.string   "title"
     t.string   "tagline"
@@ -55,5 +84,7 @@ ActiveRecord::Schema.define(version: 20170421032614) do
     t.index ["story_id"], name: "index_tags_on_story_id", using: :btree
   end
 
+  add_foreign_key "productimages", "colors"
+  add_foreign_key "productimages", "products"
   add_foreign_key "tags", "stories"
 end

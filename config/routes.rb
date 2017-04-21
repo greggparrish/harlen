@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :productviews
+  resources :colors
+  resources :productimages
   mount Ckeditor::Engine => '/ckeditor'
   #static
   root 'static#home'
@@ -7,5 +10,6 @@ Rails.application.routes.draw do
   get 'brand', to: 'static#brand'
 
   resources :stories
+  resources :products, path: 'collection'
 
 end

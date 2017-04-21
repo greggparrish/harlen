@@ -1,0 +1,20 @@
+- if @product.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@product.errors.count, "error") 
+      prohibited this item from being saved:
+    %ul
+      - @product.errors.full_messages.each do |message|
+        %li= message
+.form-wrapper#editor-modal
+  = simple_form_for @product, html: { multipart: true } do |f|
+    .form-group.text-center
+      = f.input :title
+    .form-group.text-center
+      = f.input :price
+    .form-group.text-center
+      = f.input :description
+    .form-group.text-center
+      = f.association :colors, as: :check_boxes, label: false
+    .form-group.text-center
+      = f.button :submit, class: 'btn-success'

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @color.title
+%p
+  %b Material:
+  = @color.material
+%p
+  %b Hex1:
+  = @color.hex1
+%p
+  %b Hex2:
+  = @color.hex2
+
+= link_to 'Edit', edit_color_path(@color)
+\|
+= link_to 'Back', colors_path

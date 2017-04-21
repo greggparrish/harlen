@@ -1,0 +1,2 @@
+module ProductviewsHelper
+end

@@ -1,0 +1,10 @@
+= simple_form_for(@productimage) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :orientation
+    = f.input :color
+    = f.input :image
+
+  .form-actions
+    = f.button :submit
