@@ -1,0 +1,11 @@
+.container
+  =@story.created_at.strftime("%B #{@story.created_at.day.ordinalize}, %Y")
+  %h1
+    = @story.title
+    = link_to '(edit)', edit_story_path(@story.slug)
+  %p= @story.tagline
+  = image_tag(@story.image.banner) 
+  %p= @story.caption
+  .story-body= @story.body.html_safe
+  -@story.tags.each do |t|
+    %li= t.name

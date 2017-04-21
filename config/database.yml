@@ -1,24 +1,20 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
+  timeout: 5000
+  encoding: utf8
+  host: localhost
+  port: 5432
 development:
   <<: *default
   database: <%= ENV['HARLEN_DDB_DB'] %>
   username: <%= ENV['HARLEN_DDB_USER'] %>
   password: <%= ENV['HARLEN_DDB_PASS'] %>
-  host: localhost
-  port: 5432
-  #schema_search_path: myapp,sharedapp,public
-  #min_messages: notice
-  #
 test:
   <<: *default
   database: <%= ENV['HARLEN_TDB_DB'] %>
   username: <%= ENV['HARLEN_TDB_USER'] %>
   password: <%= ENV['HARLEN_TDB_PASS'] %>
-  host: localhost
-  port: 5432
 production:
   <<: *default
   database: <%= ENV['HARLEN_PDB_DB'] %>

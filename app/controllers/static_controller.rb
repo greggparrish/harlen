@@ -9,7 +9,7 @@ class StaticController < ApplicationController
   def philanthropy
   end
 
-  def story
+  def brand
   end
 
 end

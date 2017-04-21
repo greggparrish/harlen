@@ -1,0 +1,26 @@
+- if @story.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@story.errors.count, "error") 
+      prohibited this story from being saved:
+    %ul
+      - @story.errors.full_messages.each do |message|
+        %li= message
+.form-wrapper#editor-modal
+  = simple_form_for @story, html: { multipart: true } do |f|
+    .form-group
+      - if @story.image
+        = image_tag(@story.image.banner) 
+      = f.input :image, label: false
+    .form-group.text-center
+      = f.input :title
+    .form-group.text-center
+      = f.input :tagline
+    .form-group.text-center
+      = f.input :caption
+    .form-group.text-center
+      = f.input :body, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
+    .form-group.text-center
+      = f.association :tags, as: :check_boxes, label: false
+    .form-group.text-center
+      = f.button :submit, class: 'btn-success'
