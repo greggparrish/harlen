@@ -1,0 +1,36 @@
+.nested-fields
+  .form-group.text-center
+    = f.association :color, as: :radio_buttons, label: false
+  .form-group.row
+    .col-2
+      = image_tag(f.object.top.thumb) if f.object.top?
+    .col-10
+      = f.input :top, label: false
+  .form-group.row
+    .col-2
+      = image_tag(f.object.front.thumb) if f.object.front?
+    .col-10
+      = f.input :front, label: false
+  .form-group.row
+    .col-2
+      = image_tag(f.object.side1.thumb) if f.object.side1?
+    .col-10
+      = f.input :side1, label: false
+  .form-group.row
+    .col-2
+      = image_tag(f.object.side2.thumb) if f.object.side2?
+    .col-10
+      = f.input :side2, label: false
+  .form-group.row
+    .col-2
+      = image_tag(f.object.bottom.thumb) if f.object.bottom?
+    .col-10
+      = f.input :bottom, label: false
+  .form-group.row
+    .col-2
+      = image_tag(f.object.with_model.thumb) if f.object.with_model?
+    .col-10
+      = f.input :with_model, label: false
+  = link_to_remove_association "remove image", f
+
+

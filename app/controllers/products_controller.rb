@@ -23,8 +23,8 @@ class ProductsController < ApplicationController
   # POST /products
   def create
     @product = Product.new(product_params)
-
     if @product.save
+      @product.productimages.build
       redirect_to @product, notice: 'Product was successfully created.'
     else
       render :new
@@ -34,6 +34,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   def update
     if @product.update(product_params)
+      @product.update_attributes(product_params)
       redirect_to @product, notice: 'Product was successfully updated.'
     else
       render :edit
@@ -49,11 +50,11 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:title, :price, :description)  
+      params.require(:product).permit(:title, :price, :description, productimages_attributes: [:id, :color_id, :top, :front, :side1, :side2, :bottom, :with_model, :_destroy])  
     end
 end

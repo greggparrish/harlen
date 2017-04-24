@@ -1,16 +1,12 @@
 .container
   %h1 Listing products
-  %table
-    %thead
-      %tr
-        %th
-        %th
-        %th
-    %tbody
-      - @products.each do |product|
-        %tr
-          %td= link_to 'Show', product
-          %td= link_to 'Edit', edit_product_path(product)
-          %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
-  %br
   = link_to 'New Product', new_product_path
+
+  - @products.each do |p|
+    .col-12.col-md-3
+      = link_to image_tag(p.productimages[0].top.thumb), product_path(p)
+      = link_to p.title, product_path(p)
+      = link_to 'Show', product_path(p)
+      = link_to 'Edit', edit_product_path(p)
+    = link_to 'Destroy', p, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br

@@ -14,7 +14,11 @@
       = f.input :price
     .form-group.text-center
       = f.input :description
-    .form-group.text-center
-      = f.association :colors, as: :check_boxes, label: false
+    %h3 Images
+    #images
+      = f.simple_fields_for :productimages do |image|
+        = render 'productimage_fields', f: image
+      .links 
+        = link_to_add_association 'add image set', f, :productimages
     .form-group.text-center
       = f.button :submit, class: 'btn-success'

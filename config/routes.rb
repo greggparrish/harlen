@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'brand', to: 'static#brand'
 
   resources :stories
+  resources :productimages
   resources :products, path: 'collection'
 
 end
