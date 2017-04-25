@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b New:
+  = @news.new
+%p
+  %b Create:
+  = @news.create
+%p
+  %b Update:
+  = @news.update
+%p
+  %b Edit:
+  = @news.edit
+%p
+  %b Destroy:
+  = @news.destroy
+%p
+  %b Index:
+  = @news.index
+%p
+  %b Show:
+  = @news.show
+
+= link_to 'Edit', edit_news_path(@news)
+\|
+= link_to 'Back', news_index_path
