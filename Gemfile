@@ -8,7 +8,7 @@ end
 
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap-sass'
 gem 'carrierwave', '~> 1.0'
 gem 'ckeditor'
 gem 'cocoon'

@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin
-  revision: 25df19b17123ee0852660ceb2bde7b7724edf1e5
+  revision: 19e92cef9f8e6780d1585e292f74f346236c6844
   specs:
-    activeadmin (1.0.0.pre5)
+    activeadmin (1.0.0)
       arbre (>= 1.1.1)
       bourbon
       coffee-rails
@@ -79,9 +79,9 @@ GEM
     bindex (0.5.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap (4.0.0.alpha6)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     bourbon (4.3.4)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -91,7 +91,7 @@ GEM
       bundler (~> 1.2)
       thor (~> 0.18)
     byebug (9.0.6)
-    capistrano (3.8.0)
+    capistrano (3.8.1)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -421,7 +421,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
-  bootstrap (~> 4.0.0.alpha3)
+  bootstrap-sass
   brakeman
   bundler-audit
   byebug

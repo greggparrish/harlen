@@ -1,5 +1,7 @@
 nav.navbar {
-	background: $black;
+	background: transparent;
+  border: 0;
+  border-bottom: 1px solid $dark_grey;
 	.container {
 		.dropdown-toggle {
 			&:after {
