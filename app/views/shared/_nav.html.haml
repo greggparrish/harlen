@@ -10,14 +10,13 @@
     .navbar-collapse.collapse
       %ul.nav.navbar-nav
         %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            DISCOVER
+          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}  DISCOVER
           %ul.dropdown-menu
+            = nav_link "BRAND", brand_path
             = nav_link "CREATION", creation_path
-            = nav_link "STORY", brand_path
             = nav_link "PHILANTHROPY", philanthropy_path
         = nav_link "COLLECTION", products_path
-        = nav_link "NEWS", root_path
+        = nav_link "NEWS", pressitems_path
         = nav_link "STORIES", stories_path
       %ul.nav.navbar-nav.navbar-right
         = nav_link "ACCOUNT", root_path

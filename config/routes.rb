@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   get 'philanthropy', to: 'static#philanthropy'
   get 'brand', to: 'static#brand'
 
-  resources :stories
+  resources :pressitems, path: 'news'
   resources :productimages
   resources :products, path: 'collection'
+  resources :stories
 
 end

@@ -1,0 +1,25 @@
+- if @pressitem.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@pressitem.errors.count, "error") 
+      prohibited this pressitem from being saved:
+    %ul
+      - @pressitem.errors.full_messages.each do |message|
+        %li= message
+.form-wrapper#editor-modal
+  = simple_form_for @pressitem, html: { multipart: true } do |f|
+    .form-group
+      - if @pressitem.image
+        = image_tag(@pressitem.image) 
+      = f.input :image, label: false
+    .form-group.text-center
+      = f.input :title
+    .form-group.text-center
+      = f.input :sitename
+    .form-group.text-center
+      = f.input :link
+    .form-group.text-center
+      = f.input :body, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
+    .form-group.text-center
+      = f.button :submit, class: 'btn-success'
+

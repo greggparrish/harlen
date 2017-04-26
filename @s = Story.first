@@ -1,0 +1,11 @@
+=> [32m#<Pressitem:0x0056401c2f84a8[0m
+ id: [1;34m1[0m,
+ created_at: [1;34;4mWed[0m, [1;34m26[0m [1;34;4mApr[0m [1;34m2017[0m [1;34m15[0m:[1;34m11[0m:[1;34m41[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mWed[0m, [1;34m26[0m [1;34;4mApr[0m [1;34m2017[0m [1;34m15[0m:[1;34m35[0m:[1;34m17[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ title: [31m[1;31m"[0m[31mlorem ipsum[1;31m"[0m[31m[0m,
+ link: [31m[1;31m"[0m[31mhttp://google.com[1;31m"[0m[31m[0m,
+ sitename: [31m[1;31m"[0m[31mPraesent dignissim nisi velit[1;31m"[0m[31m[0m,
+ body:
+  [31m[1;31m"[0m[31mAenean tincidunt fringilla tellus, finibus convallis augue sagittis ac. Suspendisse ultricies bibendum faucibus. Nulla blandit orci ut augue posuere, eget lobortis ex viverra. Nulla facilisi. Donec vestibulum in mauris id lacinia. Ut a pretium diam. Duis quis egestas lacus. Nunc eleifend turpis quis odio fringilla sagittis. Mauris eu libero sed mi aliquam efficitur. Vivamus sed pulvinar elit, vel fringilla dui. Duis porta, elit in dictum ultrices, ligula dui mollis lorem, non varius augue nibh ac ex. Integer faucibus dui lorem, quis vulputate elit fermentum quis.[1;31m"[0m[31m[0m,
+ image: [1;36mnil[0m,
+ slug: [31m[1;31m"[0m[31mlorem-ipsum[1;31m"[0m[31m[0m[32m>[0m

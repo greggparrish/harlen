@@ -1,0 +1,14 @@
+.container
+  %h1 Listing pressitems
+  %h3= link_to 'New Pressitem', new_pressitem_path
+
+  -@pressitems.each do |p|
+    .col-12.col-md-4
+      = link_to image_tag(p.image), pressitem_path(p.slug)
+      %li= link_to p.title, pressitem_path(p.slug)
+      %li
+        = link_to 'edit', edit_pressitem_path(p.slug)
+        = link_to 'delete', pressitem_path(p.slug), method: :delete, data: { confirm: 'Are you sure?' } 
+
+
+
