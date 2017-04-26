@@ -1,4 +1,7 @@
-.carousel-inner .item.active img {
-  display: block;
-  margin: 0 auto;
+.carousel {
+  background: #000;
+  .carousel-inner .item.active img {
+    display: block;
+    margin: 0 auto;
+  }
 }

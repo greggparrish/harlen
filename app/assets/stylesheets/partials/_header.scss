@@ -1,0 +1,12 @@
+header {
+  background: $black;
+  a {
+    text-align: center;
+    img {
+      @include centerobj;
+      height: 40px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
+}

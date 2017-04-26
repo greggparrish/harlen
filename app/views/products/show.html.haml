@@ -1,24 +1,33 @@
-.container
-  %p#notice= notice
-  %h1= @product.title
-  = link_to 'COLLECTION', products_path
-  .span.admin-controls
-    = link_to 'Edit', edit_product_path(@product)
-    \|
-    = link_to 'Delete', product_path(@product.slug), method: :delete, data: { confirm: 'Are you sure?' } 
-  %p
-    $
-    = number_with_precision(@product.price, precision: 2)
-  %p= @product.description
-  .product-images
-    -@product.productimages.each do |pi|
-      .row
-        %h2= pi.color.title
-      .row
-        = image_tag pi.front.thumb
-        = image_tag pi.side1.thumb
-        = image_tag pi.side2.thumb
-        = image_tag pi.top.thumb
-        = image_tag pi.bottom.thumb
-        = image_tag pi.with_model.thumb
+.collection-item
+  .container
+    %p#notice= notice
+    .row
+      .col-sm-12.col-md-7.col-md-push-3.image-feature
+        = image_tag @product.productimages[0].front.md
+      .col-sm-12.col-md-2.col-md-push-3.image-select
+        -@product.productimages.each do |pi|
+          .col-xs-4.col-md-12
+            = image_tag pi.front.thumb
+          .col-xs-4.col-md-12
+            = image_tag pi.side1.thumb
+          .col-xs-4.col-md-12
+            = image_tag pi.side2.thumb
+          .col-xs-4.col-md-12
+            = image_tag pi.top.thumb
+          .col-xs-4.col-md-12
+            = image_tag pi.bottom.thumb
+          .col-xs-4.col-md-12
+            = image_tag pi.with_model.thumb
+      .cleafix
+      .col-sm-12.col-md-3.col-md-pull-9.infobox
+        %h1= @product.title
+        .span.admin-controls
+          = link_to 'Edit', edit_product_path(@product)
+          \|
+          = link_to 'Delete', product_path(@product.slug), method: :delete, data: { confirm: 'Are you sure?' } 
+        = link_to 'COLLECTION', products_path
+        %p
+          $
+          = number_with_precision(@product.price, precision: 2)
+        %p= @product.description
 
