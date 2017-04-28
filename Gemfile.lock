@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/activeadmin/activeadmin
-  revision: 19e92cef9f8e6780d1585e292f74f346236c6844
+  revision: d1ce9c20a80b18b14cf3e489b138c49360b554e8
   specs:
     activeadmin (1.0.0)
       arbre (>= 1.1.1)
@@ -446,6 +446,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  kaminari
   listen (~> 3.0.5)
   mini_backtrace (= 0.1.3)
   mini_magick

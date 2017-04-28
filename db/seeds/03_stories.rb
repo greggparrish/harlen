@@ -3,8 +3,9 @@ bodytext = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ve
 if Story.count < 35
   35.times do |c|
     tags = Tag.all.sample(2)
-    story = Story.create! [
+    Story.create! [
       title: Faker::Lorem.sentence,
+      created_at: Faker::Date.between(2.years.ago, Date.today),
       tagline: Faker::Lorem.paragraph(2),
       image: File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample),
       caption: Faker::Lorem.paragraph(2..3),

@@ -1,14 +1,20 @@
-.container
-  %h1 Listing pressitems
-  %h3= link_to 'New Pressitem', new_pressitem_path
-
-  -@pressitems.each do |p|
-    .col-12.col-md-4
-      = link_to image_tag(p.image), pressitem_path(p.slug)
-      %li= link_to p.title, pressitem_path(p.slug)
-      %li
-        = link_to 'edit', edit_pressitem_path(p.slug)
-        = link_to 'delete', pressitem_path(p.slug), method: :delete, data: { confirm: 'Are you sure?' } 
+#press
+  .container
+    %h1 PRESS
+    %h3= link_to 'New', new_pressitem_path
+    #pressgrid.grid{"data-masonry" => "{ \"itemSelector\": \".grid-item\", \"columnWidth\": \".grid-width\", \"percentPosition\": \"true\", \"isFitWidth\": \"true\" }"}
+      .grid-width.col-xs-12.col-sm-6.col-md-4
+      -@pressitems.each do |p|
+        .grid-item.col-xs-12.col-sm-6.col-md-4
+          .grid-item-content
+            = link_to image_tag(p.image), p.link
+            %ul.list-unstyled
+              %li= link_to p.title, p.link
+              %li= link_to p.sitename, p.link
+              %li= p.body.html_safe
+              %li
+              = link_to 'edit', edit_pressitem_path(p)
+              = link_to 'delete', pressitem_path(p), method: :delete, data: { confirm: 'Are you sure?' } 
 
 
 

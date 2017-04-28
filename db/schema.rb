@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426151118) do
+ActiveRecord::Schema.define(version: 20170428180646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,13 +95,15 @@ ActiveRecord::Schema.define(version: 20170426151118) do
     t.index ["slug"], name: "index_stories_on_slug", unique: true, using: :btree
   end
 
+  create_table "stories_tags", id: false, force: :cascade do |t|
+    t.integer "story_id", null: false
+    t.integer "tag_id",   null: false
+  end
+
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "story_id"
-    t.index ["story_id"], name: "index_tags_on_story_id", using: :btree
+    t.string "name"
   end
 
   add_foreign_key "productimages", "colors"
   add_foreign_key "productimages", "products"
-  add_foreign_key "tags", "stories"
 end

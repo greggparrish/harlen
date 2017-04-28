@@ -1,0 +1,16 @@
+#press {
+  background: $light_grey;
+  .grid {
+    .grid-item {
+      .grid-item-content {
+        margin: 10px;
+        img {
+          @include centerobj;
+          padding: 10px;
+          margin-bottom: 10px;
+          background: $white;
+        }
+      }
+    }
+  }
+}

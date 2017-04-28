@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   def index
     @tags = Tag.all.order('name asc')
-    @stories = Story.all
+    @stories = Kaminari.paginate_array(Story.all).page(params[:page]).per(12)
   end
 
   def new

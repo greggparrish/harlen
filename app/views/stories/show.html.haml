@@ -1,4 +1,5 @@
 .container
+  %h1= link_to 'Stories', stories_path
   =@story.created_at.strftime("%B #{@story.created_at.day.ordinalize}, %Y")
   %h1
     = @story.title
@@ -7,5 +8,14 @@
   = image_tag(@story.image.banner) 
   %p= @story.caption
   .story-body= @story.body.html_safe
-  -@story.tags.each do |t|
-    %li= t.name
+  %ul.storytags.list-unstyled.list-inline
+    -@story.tags.each do |t|
+      %li= t.name
+  .col-xs-12.col-md-4
+    -if @story.previous
+      = link_to @story.previous.title, story_path(@story.previous)
+  .col-xs-12.col-md-4
+    Share
+  .col-xs-12.col-md-4
+    -if @story.next
+      = link_to @story.next.title, story_path(@story.next)

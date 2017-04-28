@@ -1,18 +1,24 @@
 .container
-  = link_to 'NEW', new_story_path()
   %h1 HARLEN STORIES
-  %h3 -- THE HARLEN BLOG --
-  %ul.list-inline.taglist
-    - @tags.each do |t|
-      %li.list-inline-item= t.name
-  .row
-    - @stories.each do |s|
-      .col-12.col-md-4
-        = link_to image_tag(s.image.thumb), story_path(s.slug)
-        %li
-          = link_to 'edit', edit_story_path(s.slug)
-          = link_to 'delete', story_path(s.slug), method: :delete, data: { confirm: 'Are you sure?' } 
-        %li= link_to s.title, story_path(s.slug)
-        %li= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
-        %li= s.tagline
+  %h3 &mdash; THE HARLEN BLOG &mdash;
+  .col-xs-12.col-md-8
+    = link_to 'NEW', new_story_path()
+    %ul.list-inline.taglist
+      - @tags.each do |t|
+        %li.list-inline-item= t.name
+    .row
+      - @stories.each do |s|
+        .col-xs-12.col-md-4
+          = link_to image_tag(s.image.thumb), story_path(s.slug)
+          %ul.list-unstyled
+            %li
+              = link_to 'edit', edit_story_path(s.slug)
+              = link_to 'delete', story_path(s.slug), method: :delete, data: { confirm: 'Are you sure?' } 
+            %li= link_to s.title, story_path(s.slug)
+            %li= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
+            %li= s.tagline
+    = paginate @stories
+  = render 'story_sidebar'
+
+
 
