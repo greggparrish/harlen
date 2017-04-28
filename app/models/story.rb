@@ -11,4 +11,5 @@ class Story < ApplicationRecord
   def previous
     Story.where("created_at < ?", created_at).limit(1).first
   end
+
 end

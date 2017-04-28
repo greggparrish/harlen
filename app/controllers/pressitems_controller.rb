@@ -2,7 +2,7 @@ class PressitemsController < ApplicationController
   before_action :set_pressitem, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pressitems = Pressitem.all
+    @pressitems = Kaminari.paginate_array(Pressitem.all).page(params[:page]).per(12)
   end
 
   def show

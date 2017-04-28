@@ -1,16 +1,27 @@
 #press {
-  background: $light_grey;
-  .grid {
-    .grid-item {
-      .grid-item-content {
-        margin: 10px;
-        img {
-          @include centerobj;
-          padding: 10px;
-          margin-bottom: 10px;
-          background: $white;
-        }
+	background: $light_grey;
+	#pressgrid {
+    width: 100%;
+		column-count: 1;
+		column-gap: 20px;
+    padding: 20px;
+		.grid-item {
+			background-color: #eee;
+			margin: 0 0 1em;
+			width: 100%;
+      display: inline-block;
+      img {
+        @include centerobj;
       }
+		}
+    @media only screen and (min-width: 767px) {
+      column-count: 2;
     }
-  }
+    @media only screen and (min-width: 992px) {
+      column-count: 3;
+    }
+    @media only screen and (min-width: 1200px) {
+      column-count: 4;
+    }
+	}
 }
