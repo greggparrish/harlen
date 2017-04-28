@@ -1,2 +1,6 @@
-.col-xs-12.col-md-4
+.col-xs-12.col-md-3
   %h3 FOLLOW
+  %h3 SEARCH
+  %h3 RECENT TWEETS
+  -if defined?(@story) && !@story.next.blank?
+    %h3= @story.next.title 

@@ -1,15 +1,15 @@
 .container
-  %h1 HARLEN STORIES
-  %h3 &mdash; THE HARLEN BLOG &mdash;
-  .col-xs-12.col-md-8
+  .col-xs-12.col-md-9
+    %h1 HARLEN STORIES
+    %h3 &mdash; THE HARLEN BLOG &mdash;
     = link_to 'NEW', new_story_path()
     %ul.list-inline.taglist
       - @tags.each do |t|
         %li.list-inline-item= t.name
     .row
-      - @stories.each do |s|
-        .col-xs-12.col-md-4
-          = link_to image_tag(s.image.thumb), story_path(s.slug)
+      - @stories.each_with_index do |s, index|
+        %div{ class: (index == 0 || index == 7 ? 'col-xs-12' : 'col-xs-12 col-md-4') }
+          = link_to image_tag(index == 0 || index == 7 ? s.image.banner : s.image.thumb), story_path(s.slug)
           %ul.list-unstyled
             %li
               = link_to 'edit', edit_story_path(s.slug)
@@ -17,6 +17,8 @@
             %li= link_to s.title, story_path(s.slug)
             %li= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
             %li= s.tagline
+            -if [0,7].include? index
+              %li= excerpt(s.body)
     = paginate @stories
   = render 'story_sidebar'
 

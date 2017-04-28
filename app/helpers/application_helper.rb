@@ -16,4 +16,10 @@ module ApplicationHelper
       link_to link_text, link_path, class: 'nav-link'
     end
   end
+
+  # get first para of article
+  def excerpt(t)
+    Nokogiri::HTML.parse(t).css('p').first.text
+  end
+
 end
