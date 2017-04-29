@@ -1,6 +1,26 @@
-.col-xs-12.col-md-3
+#story-sidebar.col-xs-12.col-md-3
   %h3 FOLLOW
+  %ul.list-unstyled.list-inline
+    %li x
+    %li y
+    %li z
   %h3 SEARCH
+
   %h3 RECENT TWEETS
+  %ul.list-unstyled.list-inline
+    -@tweets.each do |t|
+      %li= t.created_at.strftime("%B #{t.created_at.day.ordinalize}, %Y")
+      %li= auto_link(t.full_text, target_blank: true).html_safe
+
+  -if defined?(@story) && !@story.previous.blank?
+    %ul.list-unstyled.storyprevious
+      %li= link_to "< PREVIOUS POST", story_path(@story.previous)
+      %li= @story.previous.created_at.strftime("%B #{@story.previous.created_at.day.ordinalize}, %Y")
+      %li= link_to @story.previous.title, story_path(@story.previous)
+      %li= link_to image_tag(@story.previous.image.thumb), story_path(@story.previous)
   -if defined?(@story) && !@story.next.blank?
-    %h3= @story.next.title 
+    %ul.list-unstyled.storynext
+      %li= link_to "NEXT POST >", story_path(@story.next)
+      %li= link_to @story.next.title, story_path(@story.next)
+      %li= @story.next.created_at.strftime("%B #{@story.next.created_at.day.ordinalize}, %Y")
+      %li= link_to image_tag(@story.next.image.thumb), story_path(@story.next)

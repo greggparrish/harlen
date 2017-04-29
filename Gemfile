@@ -28,6 +28,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
+gem 'twitter'
+gem 'twitter-text'
 gem 'uglifier', '>= 1.3.0'
 
 

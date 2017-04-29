@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_tweets, only: [:show, :index]
   def index
     @tags = Tag.all.order('name asc')
     @stories = Kaminari.paginate_array(Story.all).page(params[:page]).per(11)
@@ -42,6 +43,10 @@ class StoriesController < ApplicationController
   private
     def set_story
       @story = Story.friendly.find(params[:id])
+    end
+
+    def set_tweets
+      @tweets = twitter_client.user_timeline('UN_Women').take(3)
     end
 
     def story_params
