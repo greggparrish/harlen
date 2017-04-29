@@ -3,7 +3,11 @@ class StoriesController < ApplicationController
   before_action :set_tweets, only: [:show, :index]
   def index
     @tags = Tag.all.order('name asc')
-    @stories = Kaminari.paginate_array(Story.all).page(params[:page]).per(11)
+    if params[:search]
+      @stories = Kaminari.paginate_array(Story.search(params[:search])).page(params[:page]).per(11)
+    else
+      @stories = Kaminari.paginate_array(Story.all).page(params[:page]).per(11)
+    end
   end
 
   def new

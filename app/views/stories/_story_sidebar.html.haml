@@ -5,7 +5,9 @@
     %li y
     %li z
   %h3 SEARCH
-
+  = form_tag(stories_path, method: "get") do  
+    = text_field_tag :search, params[:search], placeholder: "Search Stories"  
+    = submit_tag "Search", name: nil
   %h3 RECENT TWEETS
   %ul.list-unstyled.list-inline
     -@tweets.each do |t|

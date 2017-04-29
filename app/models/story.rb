@@ -12,4 +12,8 @@ class Story < ApplicationRecord
     Story.where("created_at < ?", created_at).limit(1).first
   end
 
+  def self.search(search)
+    where("title ILIKE ? OR body ILIKE ?", "%#{search}%", "%#{search}%") 
+  end
+
 end
