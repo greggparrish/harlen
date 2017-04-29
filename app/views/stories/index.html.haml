@@ -1,9 +1,10 @@
-.container
+#stories.container
   .col-xs-12.col-md-9
     %h1 
       =link_to 'HARLEN STORIES', stories_path
+    %h1 
+      = link_to 'NEW', new_story_path()
     %h3 &mdash; THE HARLEN BLOG &mdash;
-    = link_to 'NEW', new_story_path()
     -if @stories.blank?
       %h3 
         NO RESULTS FOUND FOR 
@@ -11,18 +12,19 @@
     -else
       %ul.list-inline.taglist
         - @tags.each do |t|
-          %li.list-inline-item= t.name
+          %li.list-inline-item= link_to t.name, "##{t.name.downcase}"
       .row
         - @stories.each_with_index do |s, index|
-          %div{ class: (index == 0 || index == 7 ? 'col-xs-12' : 'col-xs-12 col-md-4') }
+          - tagclasses = get_tags(s.tags)
+          %div{ class: (index == 0 || index == 7 ? "col-xs-12 story feature #{tagclasses}" : "col-xs-12 col-md-4 story #{tagclasses}") }
             = link_to image_tag(index == 0 || index == 7 ? s.image.banner : s.image.thumb), story_path(s.slug)
-            %ul.list-unstyled
+            %ul.list-unstyled.story-text
+              %li= link_to s.title.upcase, story_path(s.slug)
+              %li= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
               %li
                 = link_to 'edit', edit_story_path(s.slug)
                 = link_to 'delete', story_path(s.slug), method: :delete, data: { confirm: 'Are you sure?' } 
-              %li= link_to s.title, story_path(s.slug)
-              %li= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
-              %li= s.tagline
+              %li= s.tagline.truncate_words(10)
               -if [0,7].include? index
                 %li= excerpt(s.body)
     = paginate @stories

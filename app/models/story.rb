@@ -13,7 +13,7 @@ class Story < ApplicationRecord
   end
 
   def self.search(search)
-    where("title ILIKE ? OR body ILIKE ?", "%#{search}%", "%#{search}%") 
+    where("title ILIKE ? OR body ILIKE ? OR tagline ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
   end
 
 end

@@ -23,4 +23,8 @@ module ApplicationHelper
     Nokogiri::HTML.parse(t).css('p').first.text
   end
 
+  # get story article tags
+  def get_tags(t)
+    t.map(&:name.downcase).join(' ')
+  end
 end

@@ -6,9 +6,9 @@
       -@pressitems.each do |p, index|
         .grid-item
           = link_to image_tag(p.image), p.link
-          %ul.list-unstyled
-            %li= link_to p.title, p.link
-            %li= link_to p.sitename, p.link
+          %ul.list-unstyled.press-text
+            %li.sitename= link_to p.sitename.upcase, p.link
+            %li.title= link_to p.title, p.link
             %li= p.body.html_safe
             %li
               = link_to 'edit', edit_pressitem_path(p)

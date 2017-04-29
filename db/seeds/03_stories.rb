@@ -6,7 +6,7 @@ if Story.count < 35
     Story.create! [
       title: Faker::Lorem.sentence,
       created_at: Faker::Date.between(2.years.ago, Date.today),
-      tagline: Faker::Lorem.paragraph(2),
+      tagline: Faker::Lorem.sentence(2, true, 4),
       image: File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample),
       caption: Faker::Lorem.paragraph(2..3),
       body: bodytext, 

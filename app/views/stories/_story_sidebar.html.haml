@@ -1,18 +1,19 @@
 #story-sidebar.col-xs-12.col-md-3
   %h3 FOLLOW
-  %ul.list-unstyled.list-inline
-    %li x
-    %li y
-    %li z
+  %ul.list-unstyled.list-inline.social
+    %li= fa_icon 'rss'
+    %li= fa_icon 'twitter'
+    %li= fa_icon 'facebook'
+    %li= fa_icon 'instagram'
   %h3 SEARCH
   = form_tag(stories_path, method: "get") do  
     = text_field_tag :search, params[:search], placeholder: "Search Stories"  
     = submit_tag "Search", name: nil
   %h3 RECENT TWEETS
-  %ul.list-unstyled.list-inline
+  %ul.list-unstyled.list-inline.tweets
     -@tweets.each do |t|
-      %li= t.created_at.strftime("%B #{t.created_at.day.ordinalize}, %Y")
-      %li= auto_link(t.full_text, target_blank: true).html_safe
+      %li.date= t.created_at.strftime("%B #{t.created_at.day.ordinalize}, %Y")
+      %li.text= auto_link(t.full_text, target_blank: true).html_safe
 
   -if defined?(@story) && !@story.previous.blank?
     %ul.list-unstyled.storyprevious

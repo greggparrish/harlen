@@ -1,0 +1,62 @@
+#stories {
+  ul.taglist  {
+    text-align: center;
+  }
+  .story {
+    padding: 20px;
+    &.feature {
+      font-size: 1.2em;
+      padding: 20px 0;
+      margin: 20px 0;
+      border-top: 1px solid $light_grey;
+      border-bottom: 1px solid $light_grey;
+      img {
+        padding-bottom: 20px;
+      }
+    }
+    img {
+      float: none;
+    }
+    ul.story-text {
+      text-align: center;
+    }
+  }
+  @media only screen and (min-width: 600px) {
+    img {
+      float: left;
+      padding-right: 20px;
+    }
+    ul.story-text {
+      float: right;
+    }
+  }
+  @media only screen and (min-width: 991px) {
+    img {
+      float: none;
+    }
+  }
+}
+
+#story-sidebar {
+  ul.social {
+    text-align: center;
+    padding: 0 10px;
+    li {
+      font-size: 1.3em;
+    }
+  }
+  ul.tweets {
+    width: 100%;
+    padding-bottom: 30px;
+    text-align: center;
+    li {
+      &.date {
+        text-align: center;
+      }
+      &.text {
+        padding-bottom: 30px;
+      }
+    }
+  }
+}
+
