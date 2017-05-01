@@ -4,14 +4,14 @@
       .row
         .col-xs-12
           %ul.list-inline
-            %li FAQ
-            %li CONTACT
-            %li TWITTER
-            %li MAILING LIST
+            %li= link_to 'FAQ', faq_path
+            %li= link_to 'CONTACT', contact_path
+            %li= link_to 'TWITTER', ''
+            %li= link_to 'MAILING LIST', mailing_list_path
         .col-xs-12
-          %ul.list-inline
+          %ul.list-inline.terms
             %li
               &copy; Harlen
               = Date.today.year
-            %li Legal Disclaimer
-            %li Terms & Privacy
+            %li= link_to 'Legal Disclaimer', legal_path
+            %li= link_to 'Terms & Privacy', terms_path

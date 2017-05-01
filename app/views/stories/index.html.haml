@@ -1,33 +1,35 @@
 #stories
   .container
     .col-xs-12.col-md-9.story-main
-      %h1 
-        =link_to 'HARLEN STORIES', stories_path
-      %h1 
-        = link_to 'NEW', new_story_path()
-      %h3 &mdash; THE HARLEN BLOG &mdash;
-      -if @stories.blank?
-        %h3 
+      -if params[:search] && @stories.blank?
+        %h1.page-title 
           NO RESULTS FOUND FOR 
           = params[:search].upcase
       -else
-        %ul.list-inline.taglist
-          - @tags.each do |t|
-            %li.list-inline-item= link_to t.name, "##{t.name.downcase}"
+        -if params[:search] && !@stories.blank?
+          %h1.page-title 
+            RESULTS FOR 
+            = params[:search].upcase
+        -else    
+          %h1.page-title 
+            STORIES
+            = link_to ' (NEW)', new_story_path()
         .row
           - @stories.each_with_index do |s, index|
             - tagclasses = get_tags(s.tags)
+
             %div{ class: (index == 0 || index == 7 ? "col-xs-12 story feature #{tagclasses}" : "col-xs-12 col-md-4 story #{tagclasses}") }
               = link_to image_tag(index == 0 || index == 7 ? s.image.banner : s.image.thumb), story_path(s.slug)
               %ul.list-unstyled.story-text
-                %li= link_to s.title.upcase, story_path(s.slug)
-                %li= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
+                %li.date= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
+                %li.title
+                  %h2= link_to s.title.upcase, story_path(s.slug)
+                %li.tagline= s.tagline.truncate_words(10)
                 %li
                   = link_to 'edit', edit_story_path(s.slug)
                   = link_to 'delete', story_path(s.slug), method: :delete, data: { confirm: 'Are you sure?' } 
-                %li= s.tagline.truncate_words(10)
                 -if [0,7].include? index
-                  %li= excerpt(s.body)
+                  %li.excerpt= excerpt(s.body)
       = paginate @stories
     = render 'story_sidebar'
 

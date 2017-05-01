@@ -1,14 +1,28 @@
 /* PRIMARY BRANDING  */
 
+$worksans: 'Work Sans', sans-serif;
+$raleway: 'Raleway', sans-serif;
+$gentium: 'Gentium', serif;
+
+$headers: $worksans;
+$bodytext: $gentium;
+
+body {
+  font: 100 16px $gentium;
+}
+
 a {
+  color: $black;
   text-decoration: none;
   @include fade_transition;
   &:hover, &:focus, &:active {
+    color: $red;
     text-decoration: none;
   }
 }
 
-h1,h2,h3 {
+h1,h2,h3,h4,h5 {
+  font: 100 16px $worksans;
   text-align: center;
   text-transform: uppercase;
 }
@@ -16,7 +30,22 @@ h1,h2,h3 {
 h1 {
   font-size: 1.2em;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  font-weight: 700;
+  margin: 30px 0;
   letter-spacing: 1px;
+  font-weight: 100;
+  font-size: 1.7em;
+  color: $black;
+}
+
+h4 {
+  color: $light_grey;
+  border-top: 1px solid $lighter_grey;
+  border-bottom: 1px solid $lighter_grey;
+  padding: 20px;
+  text-transform: none;
+}
+
+h5 {
+  margin: 20px;
+  color: $light_grey;
 }

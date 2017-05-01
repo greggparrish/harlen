@@ -3,4 +3,12 @@ footer {
   background: $black;
   padding: 30px 0;
   text-align: center;
+  color: $light_grey;
+  a {
+    color: $white;
+  }
+  .terms {
+    font-size: .9em;
+    padding-top: 10px;
+  }
 }

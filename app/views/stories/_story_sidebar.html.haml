@@ -1,11 +1,4 @@
 #story-sidebar.col-xs-12.col-md-3
-  .sidebar-widget 
-    %ul.list-unstyled.list-inline.social
-      %h3 FOLLOW
-      %li= fa_icon 'rss'
-      %li= fa_icon 'twitter'
-      %li= fa_icon 'facebook'
-      %li= fa_icon 'instagram'
 
   .sidebar-widget 
     %h3 SEARCH
@@ -13,10 +6,40 @@
       = text_field_tag :search, params[:search], placeholder: "Search Stories"  
       = submit_tag "Search", name: nil
 
+  .sidebar-widget 
+    %ul.list-unstyled.list-inline.social
+      %h3 FOLLOW
+      %li
+        =link_to (fa_icon 'rss'), '/stories.rss'
+      %li
+        = link_to (fa_icon 'twitter'), ''
+      %li
+        = link_to (fa_icon 'facebook'), ''
+      %li
+        = link_to (fa_icon 'instagram'), 'https://www.instagram.com/harlen_collection/'
+
   .sidebar-widget
     %ul.list-unstyled.list-inline.tweets
       %h3 RECENT TWEETS
       -@tweets.each do |t|
         %li.text= auto_link(t.full_text, target_blank: true).html_safe
         %li.date= t.created_at.strftime("%B #{t.created_at.day.ordinalize}, %Y")
+
+  -if defined?(@story) && !@story.previous.blank?
+    .sidebar-widget
+      %h3
+        = link_to "< PREVIOUS POST", story_path(@story.previous)
+      %ul.list-unstyled.storyprevious
+        %li.date= @story.previous.created_at.strftime("%B #{@story.previous.created_at.day.ordinalize}, %Y")
+        %li.title= link_to @story.previous.title, story_path(@story.previous)
+        %li= link_to image_tag(@story.previous.image.thumb), story_path(@story.previous)
+
+  -if defined?(@story) && !@story.next.blank?
+    .sidebar-widget
+      %h3
+        = link_to "NEXT POST >", story_path(@story.next)
+      %ul.list-unstyled.storynext
+        %li.date= @story.next.created_at.strftime("%B #{@story.next.created_at.day.ordinalize}, %Y")
+        %li.title= link_to @story.next.title, story_path(@story.next)
+        %li= link_to image_tag(@story.next.image.thumb), story_path(@story.next)
 

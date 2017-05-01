@@ -1,33 +1,15 @@
 #stories
   .container
     .col-xs-12.col-md-9.story-main
-      %h1= link_to 'Stories', stories_path
-      =@story.created_at.strftime("%B #{@story.created_at.day.ordinalize}, %Y")
-      %h1
+      %h2.story-date
+        = @story.created_at.strftime("%B #{@story.created_at.day.ordinalize}, %Y")
+      %h1.page-title 
         = @story.title
         = link_to '(edit)', edit_story_path(@story.slug)
-      %p= @story.tagline
+      %h4= @story.tagline
       = image_tag(@story.image.banner) 
-      %p= @story.caption
+      %h5= @story.caption
       .story-body= @story.body.html_safe
-      %ul.storytags.list-unstyled.list-inline
-        -@story.tags.each do |t|
-          %li= t.name
 
-      .col-xs-12.col-md-6
-        -if defined?(@story) && !@story.previous.blank?
-          %ul.list-unstyled.storyprevious
-            %li= link_to "< PREVIOUS POST", story_path(@story.previous)
-            %li= @story.previous.created_at.strftime("%B #{@story.previous.created_at.day.ordinalize}, %Y")
-            %li= link_to @story.previous.title, story_path(@story.previous)
-            %li= link_to image_tag(@story.previous.image.thumb), story_path(@story.previous)
-
-      .col-xs-12.col-md-6
-        -if defined?(@story) && !@story.next.blank?
-          %ul.list-unstyled.storynext
-            %li= link_to "NEXT POST >", story_path(@story.next)
-            %li= link_to @story.next.title, story_path(@story.next)
-            %li= @story.next.created_at.strftime("%B #{@story.next.created_at.day.ordinalize}, %Y")
-            %li= link_to image_tag(@story.next.image.thumb), story_path(@story.next)
 
     = render 'story_sidebar'

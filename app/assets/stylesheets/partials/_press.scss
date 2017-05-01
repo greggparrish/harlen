@@ -1,10 +1,11 @@
 #press {
-	background: $light_grey;
+	background: $lightest_grey;
 	#pressgrid {
     width: 100%;
 		column-count: 1;
 		column-gap: 20px;
     padding: 20px;
+    text-align: center;
 		.grid-item {
 			background-color: #eee;
 			margin: 0 0 1em;
@@ -15,12 +16,15 @@
       }
       .press-text {
         padding: 5%;
-        .sitename, .title {
-          text-align: center;
+        .sitename, .date {
+          padding-bottom: 10px;
+        }
+        .date {
+          color: $lighter_grey;
         }
         .title {
-          padding-bottom: 10px;
-          font-size: 1.2em;
+          font-size: 1.3em;
+          padding-bottom: 5px;
         }
       }
 		}

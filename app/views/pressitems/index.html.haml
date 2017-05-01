@@ -1,15 +1,16 @@
 #press
   .container
-    %h1 PRESS
-    %h3= link_to 'New', new_pressitem_path
+    %h1.page-title 
+      PRESS
+      = link_to '(New)', new_pressitem_path
     #pressgrid
       -@pressitems.each do |p|
         .grid-item
           = link_to image_tag(p.image), p.link, target: '_blank'
           %ul.list-unstyled.press-text
-            %li= p.created_at.strftime("%B #{p.created_at.day.ordinalize}, %Y")
-            %li.sitename= link_to p.sitename.upcase, p.link, target: '_blank'
             %li.title= link_to p.title, p.link, target: '_blank'
+            %li.sitename= link_to p.sitename.upcase, p.link, target: '_blank'
+            %li.date= p.created_at.strftime("%B #{p.created_at.day.ordinalize}, %Y")
             %li= p.body.html_safe
             %li
               = link_to 'edit', edit_pressitem_path(p)

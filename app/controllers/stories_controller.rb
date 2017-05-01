@@ -8,6 +8,10 @@ class StoriesController < ApplicationController
     else
       @stories = Kaminari.paginate_array(Story.all.order('created_at DESC')).page(params[:page]).per(11)
     end
+    respond_to do |format|
+      format.html
+      format.rss { render layout: false }
+    end
   end
 
   def new

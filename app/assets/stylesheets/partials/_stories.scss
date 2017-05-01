@@ -1,83 +1,147 @@
 #stories {
+  @include bw_bg;
   .container {
     padding: 0;
-  }
-  .story-main {
-    background: #f3f3f3;
-  }
-  @include bw_bg;
-  ul.taglist  {
-    text-align: center;
-  }
-  .story {
-    padding: 20px;
-    &.feature {
+    overflow: hidden;
+    .story-main {
+      background: #f3f3f3;
+      margin-bottom: -99999px;
+      padding-bottom: 99999px;
+      .story {
+        padding: 20px;
+        img {
+          float: none;
+          @include centerobj;
+        }
+        h2 {
+          margin: 0;
+          padding: 0;
+        }
+        ul.story-text {
+          min-height: 150px;
+          text-align: center;
+          font: 1em $worksans;
+          li.date {
+            padding: 10px 0;
+            color: $light_grey;
+          }
+          li.title {
+            padding-bottom: 10px;
+            font-size: 1.2em;
+          }
+          li.tagline {
+            font-style: italic;
+          }
+          li.excerpt {
+            font: 100 1em $gentium;
+          }
+        }
+        &.feature {
+          font-size: 1.2em;
+          padding: 20px 10px;
+          border-top: 1px solid $lighter_grey;
+          border-bottom: 1px solid $lighter_grey;
+          h2 {
+            font-size: 1.5em;
+          }
+          ul.story-text {
+            line-height: 1.6em;
+            float: none;
+            width: 100%;
+            padding: 0 30px;
+            li.excerpt {
+              padding-top: 15px;
+              line-height: 1.5em;
+              text-align: justify;
+            }
+          }
+          img {
+            @include centerobj;
+            padding: 10px 0 20px 0;
+            width: 95%;
+          }
+        }
+      }
+      @media only screen and (min-width: 600px) {
+        .story {
+          img {
+            float: left;
+            margin-right: 2%;
+            display: inline;
+            margin: 0;
+            width: 30%;
+          }
+          ul.story-text {
+            float: right;
+            width: 65%;
+            li.title {
+              min-height: 0;
+            }
+          }
+        }
+      }
+      @media only screen and (min-width: 991px) {
+        .story {
+          img {
+            float: none;
+            width: 100%;
+          }
+          ul.story-text {
+            width: 100%;
+            float: none;
+            max-width: 100%;
+            li.title {
+              min-height: 70px;
+            }
+          }
+        }
+      }
+    }
+    h4.story-date {
+      margin: 50px 0;
+    }
+    .story-body {
       font-size: 1.2em;
-      padding: 20px 0;
-      margin: 20px 0;
-      border-top: 1px solid $light_grey;
-      border-bottom: 1px solid $light_grey;
-      ul.story-text {
-        width: 100%;
-        float: none;
-      }
-      img {
-        padding-bottom: 20px;
-        width: 100%;
-        padding-right: 0;
-      }
-    }
-    img {
-      float: none;
-      @include centerobj;
-    }
-    ul.story-text {
-      text-align: center;
-    }
-  }
-  @media only screen and (min-width: 600px) {
-    .story {
-      img {
-        float: left;
-        margin-right: 2%;
-        display: inline;
-        margin: 0;
-        width: 30%;
-      }
-      ul.story-text {
-        float: right;
-        width: 65%;
-      }
-    }
-  }
-  @media only screen and (min-width: 991px) {
-    .story {
-      img {
-        float: none;
-        width: 100%;
-      }
-      ul.story-text {
-        width: 100%;
-        float: none;
-        max-width: 100%;
+      line-height: 1.4em;
+      p {
+        padding: 10px;
       }
     }
   }
 }
 
 #story-sidebar {
+  color: $light_grey;
   background: $black;
-  h1,h2,h3 {
+  text-align: center;
+  h3 {
+    font-size: 1.2em;
+  }
+  a {
+    color: $lightest-grey;
+    &:hover, &:active, &:focus {
+      color: $red;
+    }
+  }
+  h1,h2,h3, h3 a {
     color: $white;
   }
   .sidebar-widget {
-    padding: 25px 0;
+    padding: 10px 0 50px 0;
     margin-bottom: 25px;
     border-bottom: 1px solid $dark_grey;
+    color: $lighter-grey;
+    ul.storyprevious, ul.storynext {
+      color: $white;
+      li.date {
+        color: $light_grey;
+      }
+      img {
+        padding-top: 20px;
+      }
+    }
     ul.social {
-      text-align: center;
       padding: 0 10px;
-      color: $light_grey;
       li {
         font-size: 1.3em;
         padding: 0 3%;
@@ -96,16 +160,15 @@
         color: $white;
         &#search {
           background: $black;
-          border: 1px solid $light_grey;
+          border: 1px solid $lightest-grey;
         }
       }
       input[type="submit"] {
-        color: $light_grey;
         background: $dark_grey;
         border: 0;
         &:hover, &:active, &:focus {
           color: $dark_grey;
-          background: $light_grey;
+          background: $lightest-grey;
         }
       }
     }
@@ -113,16 +176,21 @@
       width: 100%;
       padding-bottom: 30px;
       text-align: center;
-      color: $light_grey;
+      line-height: 1.4em;
       li {
         &.date {
           text-align: center;
-          padding-bottom: 30px;
-        }
-        &.text {
+          &:after {
+            padding: 30px;
+            display: block;
+            content: "\00b7";
+            color: $red;
+          }
+          &:last-child:after {
+            content: none;
+          }
         }
       }
     }
   }
 }
-

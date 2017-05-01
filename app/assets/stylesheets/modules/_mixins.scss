@@ -8,13 +8,13 @@
 }
 
 @mixin bw_bg {
-	background: $light_grey;
-	background: -moz-linear-gradient(left, $light_grey 0%, $light_grey 50%, $black 51%, $black 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, $light_grey), color-stop(50%, $light_grey), color-stop(51%, $black), color-stop(100%, $black));
-	background: -webkit-linear-gradient(left, $light_grey 0%, $light_grey 50%, $black 51%, $black 100%);
-	background: -o-linear-gradient(left, $light_grey 0%, $light_grey 50%, $black 51%, $black 100%);
-	background: -ms-linear-gradient(left, $light_grey 0%, $light_grey 50%, $black 51%, $black 100%);
-	background: linear-gradient(to right, $light_grey 0%, $light_grey 50%, $black 51%, $black 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$light_grey, endColorstr=$black, GradientType=1 );
+	background: $lightest-grey;
+	background: -moz-linear-gradient(left, $lightest-grey 0%, $lightest-grey 50%, $black 51%, $black 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, $lightest-grey), color-stop(50%, $lightest-grey), color-stop(51%, $black), color-stop(100%, $black));
+	background: -webkit-linear-gradient(left, $lightest-grey 0%, $lightest-grey 50%, $black 51%, $black 100%);
+	background: -o-linear-gradient(left, $lightest-grey 0%, $lightest-grey 50%, $black 51%, $black 100%);
+	background: -ms-linear-gradient(left, $lightest-grey 0%, $lightest-grey 50%, $black 51%, $black 100%);
+	background: linear-gradient(to right, $lightest-grey 0%, $lightest-grey 50%, $black 51%, $black 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$lightest-grey, endColorstr=$black, GradientType=1 );
 }
 

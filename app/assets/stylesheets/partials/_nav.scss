@@ -1,9 +1,29 @@
 nav.navbar {
+  font-family: $worksans;
   background: $black;
   border: 0;
   border-radius: 0;
   border-bottom: 1px solid $dark_grey;
   margin: 0;
+  ul.nav, ul.dropdown-menu {
+    li  {
+      a {
+        color: $light_grey;
+        &.active {
+        }
+      }
+      &:hover, &:active, &:focus {
+        background-color: $black;
+      }
+      &.active a {
+        background: $black!important;
+        color: $red!important;
+        &:hover {
+          background: $black;
+        }
+      }
+    }
+  }
   .container {
     .dropdown-toggle {
       &:after {

@@ -12,4 +12,19 @@ class StaticController < ApplicationController
   def brand
   end
 
+  def faq
+  end
+
+  def contact
+  end
+
+  def mailing_list
+  end
+
+  def legal
+  end
+
+  def terms
+  end
+
 end
