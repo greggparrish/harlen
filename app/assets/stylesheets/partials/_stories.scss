@@ -1,4 +1,11 @@
 #stories {
+  .container {
+    padding: 0;
+  }
+  .story-main {
+    background: #f3f3f3;
+  }
+  @include bw_bg;
   ul.taglist  {
     text-align: center;
   }
@@ -10,51 +17,110 @@
       margin: 20px 0;
       border-top: 1px solid $light_grey;
       border-bottom: 1px solid $light_grey;
+      ul.story-text {
+        width: 100%;
+        float: none;
+      }
       img {
         padding-bottom: 20px;
+        width: 100%;
+        padding-right: 0;
       }
     }
     img {
       float: none;
+      @include centerobj;
     }
     ul.story-text {
       text-align: center;
     }
   }
   @media only screen and (min-width: 600px) {
-    img {
-      float: left;
-      padding-right: 20px;
-    }
-    ul.story-text {
-      float: right;
+    .story {
+      img {
+        float: left;
+        margin-right: 2%;
+        display: inline;
+        margin: 0;
+        width: 30%;
+      }
+      ul.story-text {
+        float: right;
+        width: 65%;
+      }
     }
   }
   @media only screen and (min-width: 991px) {
-    img {
-      float: none;
+    .story {
+      img {
+        float: none;
+        width: 100%;
+      }
+      ul.story-text {
+        width: 100%;
+        float: none;
+        max-width: 100%;
+      }
     }
   }
 }
 
 #story-sidebar {
-  ul.social {
-    text-align: center;
-    padding: 0 10px;
-    li {
-      font-size: 1.3em;
-    }
+  background: $black;
+  h1,h2,h3 {
+    color: $white;
   }
-  ul.tweets {
-    width: 100%;
-    padding-bottom: 30px;
-    text-align: center;
-    li {
-      &.date {
-        text-align: center;
+  .sidebar-widget {
+    padding: 25px 0;
+    margin-bottom: 25px;
+    border-bottom: 1px solid $dark_grey;
+    ul.social {
+      text-align: center;
+      padding: 0 10px;
+      color: $light_grey;
+      li {
+        font-size: 1.3em;
+        padding: 0 3%;
       }
-      &.text {
-        padding-bottom: 30px;
+    }
+    form { 
+      input {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        width: 80%;
+        max-width: 250px;
+        padding: 8px;
+        margin-bottom: 10px;
+        @include fade_transition;
+        color: $white;
+        &#search {
+          background: $black;
+          border: 1px solid $light_grey;
+        }
+      }
+      input[type="submit"] {
+        color: $light_grey;
+        background: $dark_grey;
+        border: 0;
+        &:hover, &:active, &:focus {
+          color: $dark_grey;
+          background: $light_grey;
+        }
+      }
+    }
+    ul.tweets {
+      width: 100%;
+      padding-bottom: 30px;
+      text-align: center;
+      color: $light_grey;
+      li {
+        &.date {
+          text-align: center;
+          padding-bottom: 30px;
+        }
+        &.text {
+        }
       }
     }
   }

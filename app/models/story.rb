@@ -5,11 +5,11 @@ class Story < ApplicationRecord
   mount_uploader :image, StoryimageUploader
 
   def next
-    Story.where("created_at > ?", created_at).limit(1).first
+    Story.unscoped.where("created_at >= ? AND id != ?", created_at, id).order("created_at DESC").first
   end
 
   def previous
-    Story.where("created_at < ?", created_at).limit(1).first
+    Story.unscoped.where("created_at <= ? AND id != ?", created_at, id).order("created_at DESC").first
   end
 
   def self.search(search)

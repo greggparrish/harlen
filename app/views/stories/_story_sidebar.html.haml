@@ -1,29 +1,22 @@
 #story-sidebar.col-xs-12.col-md-3
-  %h3 FOLLOW
-  %ul.list-unstyled.list-inline.social
-    %li= fa_icon 'rss'
-    %li= fa_icon 'twitter'
-    %li= fa_icon 'facebook'
-    %li= fa_icon 'instagram'
-  %h3 SEARCH
-  = form_tag(stories_path, method: "get") do  
-    = text_field_tag :search, params[:search], placeholder: "Search Stories"  
-    = submit_tag "Search", name: nil
-  %h3 RECENT TWEETS
-  %ul.list-unstyled.list-inline.tweets
-    -@tweets.each do |t|
-      %li.date= t.created_at.strftime("%B #{t.created_at.day.ordinalize}, %Y")
-      %li.text= auto_link(t.full_text, target_blank: true).html_safe
+  .sidebar-widget 
+    %ul.list-unstyled.list-inline.social
+      %h3 FOLLOW
+      %li= fa_icon 'rss'
+      %li= fa_icon 'twitter'
+      %li= fa_icon 'facebook'
+      %li= fa_icon 'instagram'
 
-  -if defined?(@story) && !@story.previous.blank?
-    %ul.list-unstyled.storyprevious
-      %li= link_to "< PREVIOUS POST", story_path(@story.previous)
-      %li= @story.previous.created_at.strftime("%B #{@story.previous.created_at.day.ordinalize}, %Y")
-      %li= link_to @story.previous.title, story_path(@story.previous)
-      %li= link_to image_tag(@story.previous.image.thumb), story_path(@story.previous)
-  -if defined?(@story) && !@story.next.blank?
-    %ul.list-unstyled.storynext
-      %li= link_to "NEXT POST >", story_path(@story.next)
-      %li= link_to @story.next.title, story_path(@story.next)
-      %li= @story.next.created_at.strftime("%B #{@story.next.created_at.day.ordinalize}, %Y")
-      %li= link_to image_tag(@story.next.image.thumb), story_path(@story.next)
+  .sidebar-widget 
+    %h3 SEARCH
+    = form_tag(stories_path, method: "get") do  
+      = text_field_tag :search, params[:search], placeholder: "Search Stories"  
+      = submit_tag "Search", name: nil
+
+  .sidebar-widget
+    %ul.list-unstyled.list-inline.tweets
+      %h3 RECENT TWEETS
+      -@tweets.each do |t|
+        %li.text= auto_link(t.full_text, target_blank: true).html_safe
+        %li.date= t.created_at.strftime("%B #{t.created_at.day.ordinalize}, %Y")
+

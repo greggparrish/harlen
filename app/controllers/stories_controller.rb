@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
     if params[:search]
       @stories = Kaminari.paginate_array(Story.search(params[:search])).page(params[:page]).per(11)
     else
-      @stories = Kaminari.paginate_array(Story.all).page(params[:page]).per(11)
+      @stories = Kaminari.paginate_array(Story.all.order('created_at DESC')).page(params[:page]).per(11)
     end
   end
 

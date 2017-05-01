@@ -2,7 +2,7 @@
 
 a {
   text-decoration: none;
-  transition: color 0.3s ease;
+  @include fade_transition;
   &:hover, &:focus, &:active {
     text-decoration: none;
   }

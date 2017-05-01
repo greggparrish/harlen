@@ -5,7 +5,7 @@ if Story.count < 35
     tags = Tag.all.sample(2)
     Story.create! [
       title: Faker::Lorem.sentence,
-      created_at: Faker::Date.between(2.years.ago, Date.today),
+      created_at: Faker::Time.between(2.years.ago, Date.today, :all),
       tagline: Faker::Lorem.sentence(2, true, 4),
       image: File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample),
       caption: Faker::Lorem.paragraph(2..3),

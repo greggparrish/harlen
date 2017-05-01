@@ -1,23 +1,24 @@
-%nav.navbar.navbar-default{role: "navigation"}
+%nav.navbar.navbar-default{:role => "navigation"}
   .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+    .navbar-header.navbar-right.pull-right.user-menu
+      %ul.nav.navbar-nav.navbar-right
+        = nav_link (fa_icon 'shopping-bag'), brand_path
+        = nav_link (fa_icon 'user-o'), brand_path
+    .navbar-header.navbar-right.pull-left
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-    .navbar-collapse.collapse
-      %ul.nav.navbar-nav
+    .visible-xs-block.clearfix
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        = nav_link "COLLECTION", products_path
+        = nav_link "PRESS", pressitems_path
+        = nav_link "STORIES", stories_path
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}  DISCOVER
           %ul.dropdown-menu
             = nav_link "BRAND", brand_path
             = nav_link "CREATION", creation_path
             = nav_link "PHILANTHROPY", philanthropy_path
-        = nav_link "COLLECTION", products_path
-        = nav_link "PRESS", pressitems_path
-        = nav_link "STORIES", stories_path
-      %ul.nav.navbar-nav.navbar-right
-        = nav_link "ACCOUNT", root_path
-        = nav_link "CART", root_path
-

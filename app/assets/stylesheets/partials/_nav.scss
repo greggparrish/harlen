@@ -1,35 +1,53 @@
 nav.navbar {
   background: $black;
-	border: 0;
-  border-radius: 0;
-	border-bottom: 1px solid $dark_grey;
-  margin: 0;
-	.container {
-		.dropdown-toggle {
-			&:after {
-				border: 0;
-			}
-		}
-	}
-	.container > button {
-		border: 1px solid $white;
-	}
-}
-/* actual dropdown animation */
-.dropdown {
-  background: $black;
   border: 0;
-	.dropdown-menu {
-    background: $black;
-		max-height: 0;
-		display: block;
-		overflow: hidden;
-		opacity: 0;
-	}
+  border-radius: 0;
+  border-bottom: 1px solid $dark_grey;
+  margin: 0;
+  .container {
+    .dropdown-toggle {
+      &:after {
+        border: 0;
+      }
+    }
+    .navbar-collapse {
+      overflow: hidden;
+    }
+  }
+  .navbar-toggle {
+    float: left;
+    border: 0;
+    &:hover, &:active, &:focus {
+      background-color: $black;
+    }
+    .icon-bar {
+      background-color: $light_grey;
+    }
+  }
+  .user-menu {
+    padding: 0 10px;
+    li {
+      display: inline-block;
+    }
+  }
+}
 
-	&.open .dropdown-menu {
-		transition: all 0.3s;
-		max-height: 200px;
-		opacity: 1;
-	}
+.dropdown {
+  border: 0;
+  .dropdown-menu {
+    border: 0;
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    background: $black;
+    opacity: 0;
+  }
+
+  &.open .dropdown-menu {
+    border: 0;
+    background: $black;
+    transition: all 0.3s;
+    max-height: 200px;
+    opacity: 1;
+  }
 }

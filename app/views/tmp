@@ -1,0 +1,35 @@
+%nav.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+  .container
+    .navbar-header.navbar-left.pull-left
+      %a.navbar-brand{:href => "/"} GNOMIS
+    .navbar-header.navbar-right.pull-right
+      %ul.nav.pull-left
+        %li.navbar-text.pull-left User Name
+        %li.dropdown.pull-right
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :style => "color:#777; margin-top: 5px;"}
+            %span.glyphicon.glyphicon-user
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "/users/id", :title => "Profile"} Profile
+            %li
+              %a{:href => "/logout", :title => "Logout"} Logout
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+    .visible-xs-block.clearfix
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        %li
+          %a{:href => "/news"} News
+        %li
+          %a{:href => "/Shop"} Shop
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{:href => "/locator"} Locator
+        %li
+          %a{:href => "/extras"} Extras
+
+
