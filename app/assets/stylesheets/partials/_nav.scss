@@ -55,12 +55,16 @@ nav.navbar {
 .dropdown {
   border: 0;
   .dropdown-menu {
+    font-size: 16px;
     border: 0;
     max-height: 0;
     display: block;
     overflow: hidden;
     background: $black;
     opacity: 0;
+    li {
+      margin: 10px 0;
+    }
   }
 
   &.open .dropdown-menu {

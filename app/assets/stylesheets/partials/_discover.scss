@@ -1,0 +1,119 @@
+#discover {
+  &.brand {
+    background: $black;
+    font-weight: 100;
+    padding-bottom: 50px;
+    .container {
+      img {
+        @include centerobj;
+        width: 100%;
+        padding-bottom: 20px;
+      }
+      color: $lightest_grey;
+      p {
+        line-height: 1.7em;
+      }
+      .pullquote {
+        margin-top: -8px;
+        font: 100 2em $raleway;
+        padding-bottom: 20px;
+      }
+      .bordered {
+        width: 95%;
+        @include centerobj;
+        border-top: 1px dotted $light_grey;
+        padding: 15px 0;
+        margin: 15px 0;
+        border-bottom: 1px dotted $light_grey;
+        text-align: center;
+
+      }
+    }
+  }
+  &.creation {
+    .container-fluid.video {
+      background: $black;
+      margin: 0;
+      padding: 0;
+      .container {
+        margin: 0;
+        padding: 0;
+        @include centerobj;
+      }
+    }
+    .container-fluid.white {
+      color: $light_grey;
+      background: $white;
+      line-height: 1.4em;
+      padding: 20px 0 30px;
+      img {
+        padding-top: 30px;
+      }
+      h3 {
+        padding-top: 10px;
+        font-size: 1.3em;
+        color: $medium_grey;
+      }
+    }
+    .container-fluid.full-img {
+      margin: 0;
+      padding: 0;
+      img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        clear: right;
+        padding-bottom: 0;
+      }
+    }
+  }
+  &.philanthropy {
+    .grey {
+      background: $lightest_grey;
+      .phil-header { 
+        margin-top: 30px;
+        .images {
+
+          margin:0;
+          padding: 0;
+        }
+        .text {
+          text-align: center;
+          line-height: 1.8em;
+          font-size: 1.1em;
+          padding: 30px 0;
+        }
+      }
+    }
+    .room-to-read {
+      padding: 50px 0;
+      line-height: 1.8em;
+      font-size: 1.1em;
+      img {
+        max-width: 250px;
+        @include centerobj;
+        padding-bottom: 30px;
+        margin-top: 25px;
+      }
+      .text {
+      }
+    }
+    .feature {
+      padding: 7px;
+      margin: 0;
+    }
+    .image-grid {
+      padding: 0 15px 50px 15px;
+      .col-xs-6 {
+        padding: 0;
+        margin: 0;
+        padding: 7px;
+        img {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
