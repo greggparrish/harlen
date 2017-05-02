@@ -5,6 +5,7 @@ nav.navbar {
   border-radius: 0;
   border-bottom: 1px solid $dark_grey;
   margin: 0;
+  overflow: hidden;
   ul.nav, ul.dropdown-menu {
     li  {
       a {

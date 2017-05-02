@@ -1,12 +1,13 @@
 .container
-  %h1 Listing products
-  = link_to 'New Product', new_product_path
-
+  %h1 
+    COLLECTION
+    = link_to '(New)', new_product_path
   - @products.each do |p|
-    .col-12.col-md-3
-      = link_to image_tag(p.productimages[0].top.thumb), product_path(p)
-      = link_to p.title, product_path(p)
-      = link_to 'Show', product_path(p)
-      = link_to 'Edit', edit_product_path(p)
-    = link_to 'Destroy', p, :method => :delete, :data => { :confirm => 'Are you sure?' }
-  %br
+    .col-xs-6.col-md-4
+      =link_to (image_tag p[0][0].md), product_path(id: p[0][2], color: p[0][3])
+      %ul.list-unstyled
+        %li= link_to "#{p[0][3].titlecase} #{p[0][1]}", product_path(p[0][2])
+        %li
+          = link_to 'Show', product_path(p[0][2])
+          = link_to 'Edit', edit_product_path(p[0][2])
+          = link_to 'Destroy', product_path(p[0][2]), :method => :delete, :data => { :confirm => 'Are you sure?' }

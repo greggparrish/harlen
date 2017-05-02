@@ -3,12 +3,15 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.all
+    @products = Productimage.all.order(:product_id).group_by{|p| [p.front, p.product.title, p.product.slug, p.color.title] }
+    @prods = Product.joins(:productimages).group("products.id", "productimages.color_id").order(:title)
     @colors = Color.all
   end
 
   # GET /products/1
   def show
+    @colors = Color.all
+    @prod_colors = @product.productimages.group_by {|p| p.color}
   end
 
   # GET /products/new

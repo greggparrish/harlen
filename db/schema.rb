@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428180646) do
+ActiveRecord::Schema.define(version: 20170502194208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,9 +65,7 @@ ActiveRecord::Schema.define(version: 20170428180646) do
     t.integer  "color_id"
     t.string   "front"
     t.string   "side1"
-    t.string   "side2"
     t.string   "top"
-    t.string   "bottom"
     t.string   "with_model"
     t.index ["color_id"], name: "index_productimages_on_color_id", using: :btree
     t.index ["product_id"], name: "index_productimages_on_product_id", using: :btree

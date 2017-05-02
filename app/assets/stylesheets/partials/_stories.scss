@@ -4,7 +4,8 @@
     padding: 0;
     overflow: hidden;
     .story-main {
-      background: #f3f3f3;
+      background: $lightest_grey;
+      color: $medium_grey;
       margin-bottom: -99999px;
       padding-bottom: 99999px;
       .story {
@@ -102,7 +103,7 @@
     }
     .story-body {
       font-size: 1.2em;
-      line-height: 1.4em;
+      line-height: 1.5em;
       p {
         padding: 10px;
       }

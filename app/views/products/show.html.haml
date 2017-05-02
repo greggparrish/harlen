@@ -1,25 +1,30 @@
-.collection-item
+-if params[:color]
+  -passcolor = params[:color].parameterize
+  -prodcolor = passcolor.in?(@colors.map {|c| c.title.parameterize}) ? passcolor : @product.productimages.first.color.title.parameterize 
+-else
+  -prodcolor = @product.productimages.first.color.title.parameterize 
+
+#collection-item
   .container
     %p#notice= notice
     .row
-      .col-sm-12.col-md-7.col-md-push-3.image-feature
-        = image_tag @product.productimages[0].front.md
-      .col-sm-12.col-md-2.col-md-push-3.image-select
-        -@product.productimages.each do |pi|
-          .col-xs-4.col-md-12
-            = image_tag pi.front.thumb
-          .col-xs-4.col-md-12
-            = image_tag pi.side1.thumb
-          .col-xs-4.col-md-12
-            = image_tag pi.side2.thumb
-          .col-xs-4.col-md-12
-            = image_tag pi.top.thumb
-          .col-xs-4.col-md-12
-            = image_tag pi.bottom.thumb
-          .col-xs-4.col-md-12
-            = image_tag pi.with_model.thumb
-      .cleafix
-      .col-sm-12.col-md-3.col-md-pull-9.infobox
+      -@product.productimages.each do |pi|
+        - activecolor = pi.color.title.parameterize == prodcolor ? ' active' : ''
+        #image-set{ class: "color_#{pi.color.title.parameterize}"+ activecolor }  
+          #image-feature.col-sm-12.col-md-7.col-md-push-3
+            = image_tag pi.front.lg, class: 'img-responsive'
+          #image-select.col-sm-12.col-md-2.col-md-push-3
+            #colorswitch{ class: "color_#{pi.color.title}" }
+              .col-xs-6.col-md-12.image-opt
+                = image_tag pi.front.thumb
+              .col-xs-6.col-md-12
+                = image_tag pi.side1.thumb
+              .col-xs-6.col-md-12
+                = image_tag pi.top.thumb
+              .col-xs-6.col-md-12
+                = image_tag pi.with_model.thumb
+
+      #infobox.col-sm-12.col-md-3.col-md-pull-9
         %h1= @product.title
         .span.admin-controls
           = link_to 'Edit', edit_product_path(@product)
@@ -29,5 +34,20 @@
         %p
           $
           = number_with_precision(@product.price, precision: 2)
+        #colorchoice
+          %p AVAILABLE IN
+          -@prod_colors.each do |c|
+            .col-xs-3
+              - colorclass = c[0]['title'].parameterize
+              -if c[0]['material'].present?
+                #colorbox{ class: "color_#{colorclass}" }
+                  = image_tag '/assets/structural/'+c[0]['material']
+                = c[0]['title']
+              -elsif c[0]['hex1'].present? && c[0]['hex2'].present?
+                #colorbox{ class: "color_#{colorclass}", style: "background: linear-gradient(to right bottom, #{c[0]['hex1']} 50%, #{c[0]['hex2']} 50%);" }
+                =c[0]['title']
+              -else c[0]['hex1'].present? and !c[0]['hex2'].present?
+                #colorbox{ class: "color_#{colorclass}", style: "background: #{c[0]['hex1']}" }
+                =c[0]['title']
         %p= @product.description
 
