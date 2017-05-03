@@ -2,8 +2,11 @@
   .container
     .navbar-header.navbar-right.pull-right.user-menu
       %ul.nav.navbar-nav.navbar-right
-        = nav_link (fa_icon 'shopping-bag'), ''
-        = nav_link (fa_icon 'user-o'), ''
+        = nav_link (fa_icon 'shopping-bag'), '/cart'
+        -if user_signed_in?
+          = nav_link (fa_icon 'user-o'), edit_user_registration_path
+        -else
+          = nav_link (fa_icon 'user-o'), new_user_session_path
     .navbar-header.navbar-right.pull-left
       %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
@@ -19,6 +22,6 @@
         %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}  DISCOVER
           %ul.dropdown-menu
-            = nav_link "BRAND", brand_path
-            = nav_link "CREATION", creation_path
-            = nav_link "PHILANTHROPY", philanthropy_path
+            = nav_link "BRAND", discover_brand_path
+            = nav_link "CREATION", discover_creation_path
+            = nav_link "PHILANTHROPY", discover_philanthropy_path

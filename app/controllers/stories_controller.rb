@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_tweets, only: [:show, :index]
+
   def index
     @tags = Tag.all.order('name asc')
     if params[:search]
@@ -16,6 +17,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    authorize @story
   end
 
   def show
@@ -23,6 +25,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(story_params)
+    authorize @story
     if @story.save
       @story.tag_ids = params[:story][:tag_ids]
       redirect_to @story, notice: 'Story Created'
@@ -32,6 +35,7 @@ class StoriesController < ApplicationController
   end
 
   def edit
+    authorize @story
   end
 
   def update
@@ -49,8 +53,10 @@ class StoriesController < ApplicationController
   end
 
   private
+
     def set_story
       @story = Story.friendly.find(params[:id])
+      authorize @story
     end
 
     def set_tweets

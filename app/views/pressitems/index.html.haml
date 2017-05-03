@@ -2,7 +2,9 @@
   .container
     %h1.page-title 
       PRESS
-      = link_to '(New)', new_pressitem_path
+      -if user_signed_in?
+        -if current_user.try(:admin?)
+          = link_to '(New)', new_pressitem_path
     #pressgrid
       -@pressitems.each do |p|
         .grid-item
@@ -12,8 +14,10 @@
             %li.sitename= link_to p.sitename.upcase, p.link, target: '_blank'
             %li.date= p.created_at.strftime("%B #{p.created_at.day.ordinalize}, %Y")
             %li= p.body.html_safe
-            %li
-              = link_to 'edit', edit_pressitem_path(p)
-              = link_to 'delete', pressitem_path(p), method: :delete, data: { confirm: 'Are you sure?' } 
+            -if user_signed_in?
+              -if current_user.try(:admin?)
+                %li
+                  = link_to 'edit', edit_pressitem_path(p)
+                  = link_to 'delete', pressitem_path(p), method: :delete, data: { confirm: 'Are you sure?' } 
     .clearfix
     = paginate @pressitems

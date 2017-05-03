@@ -1,3 +1,22 @@
-.form-control {
-  border: 1px solid $dark_grey;
+#auth {
+  padding: 30px 0;
+  font: $worksans;
+  form {
+    max-width: 500px;
+    @include centerobj;
+    padding: 30px;
+  }
+  .devise-links {
+    @include centerobj;
+    text-align: center;
+    a {
+      padding: 10px 0;
+    }
+  }
+  .btn.submit {
+    padding: 8px;
+    @include centerobj;
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
 }

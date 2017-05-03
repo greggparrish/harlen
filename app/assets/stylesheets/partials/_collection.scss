@@ -1,48 +1,89 @@
+#collection {
+	.product-item {
+		position: relative;
+		.product-title {
+			background-color: $white_90;
+			height: 100%;
+			opacity: 0;
+			position: absolute;
+			top: 0; bottom: 0; left: 0; right: 0;
+			transition: .5s ease;
+			width: 100%;
+			text-transform: uppercase;
+			text-align: center;
+			a {
+				color: $dark_grey;
+				font-size: 1.3em;
+				position: absolute;
+				top: 50%; left: 50%;
+				transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+        display: block;
+        padding: 25%;
+			}     
+			&:hover {
+				opacity:1;
+			}
+		}
+	}
+}
+
+
 #collection-item {
-  padding: 30px 0;
-  #image-set {
-    display: none;
-    &.active {
+	#image-set {
+		display: none;
+		&.active {
+			display: block;
+		}
+		#image-feature {
+			img {
+				@include centerobj;
+			}
+		}
+		#image-select {
+			@include centerobj;
+			margin-top: 30px;
+			overflow: hidden;
+		}
+	}
+	#infobox {
+		@include centerobj;
+		padding: 30px 0;
+		max-width: 80%;
+    font-size: 1.1em;
+    p.price {
+      margin-top: 20px;
+      color: $light_grey;
       display: block;
-    }
-    #image-feature {
-      img {
-        @include centerobj;
-      }
-    }
-    #image-select {
-      @include centerobj;
-      margin-top: 30px;
-      overflow: hidden;
-    }
-  }
-  #infobox {
-    @include centerobj;
-    margin-top: 30px;
-    padding: 30px;
-    max-width: 80%;
-    #colorchoice {
       text-align: center;
-overflow: hidden;
-      #colorbox {
-        @include centerobj;
-        width: 50px;
-        height: 50px;
-      }
+      font-size: 1.3em;
     }
-  }
+		#colorchoice {
+			text-align: center;
+			overflow: hidden;
+			p {
+        margin: 20px;
+			}
+			#colorbox {
+				@include centerobj;
+				width: 50px;
+				height: 50px;
+			}
+		}
+    .description {
+      padding: 20px 0;
+      line-height: 1.5em;
+    }
+	}
 }
 
 @media screen and ( max-width: 768px ) {
-  .image-feature {
-    img {
-      width: 45%;
-    }
-  }
-  .infobox {
-
-  }
-  .image-select {
-    max-width: 80%;
-  }
+	.image-feature {
+		img {
+			width: 45%;
+		}
+	}
+	.image-select {
+		max-width: 80%;
+	}
 }

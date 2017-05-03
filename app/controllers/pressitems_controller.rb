@@ -10,6 +10,7 @@ class PressitemsController < ApplicationController
 
   def new
     @pressitem = Pressitem.new
+    authorize @pressitem
   end
 
   def edit
@@ -17,6 +18,7 @@ class PressitemsController < ApplicationController
 
   def create
     @pressitem = Pressitem.new(pressitem_params)
+    authorize @pressitem
     if @pressitem.save
       redirect_to @pressitem, notice: 'Pressitem was successfully created.'
     else
@@ -38,8 +40,10 @@ class PressitemsController < ApplicationController
   end
 
   private
+
     def set_pressitem
       @pressitem = Pressitem.friendly.find(params[:id])
+      authorize @pressitem
     end
 
     def pressitem_params

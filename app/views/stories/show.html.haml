@@ -5,7 +5,9 @@
         = @story.created_at.strftime("%B #{@story.created_at.day.ordinalize}, %Y")
       %h1.page-title 
         = @story.title
-        = link_to '(edit)', edit_story_path(@story.slug)
+        -if user_signed_in?
+          -if current_user.try(:admin?)
+            = link_to '(edit)', edit_story_path(@story.slug)
       %h4= @story.tagline
       = image_tag(@story.image.banner) 
       %h5= @story.caption

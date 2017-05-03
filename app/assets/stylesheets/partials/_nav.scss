@@ -5,7 +5,6 @@ nav.navbar {
   border-radius: 0;
   border-bottom: 1px solid $dark_grey;
   margin: 0;
-  overflow: hidden;
   ul.nav, ul.dropdown-menu {
     li  {
       a {
@@ -33,6 +32,7 @@ nav.navbar {
     }
     .navbar-collapse {
       overflow: hidden;
+      border-color: $black;
     }
   }
   .navbar-toggle {
@@ -47,6 +47,8 @@ nav.navbar {
   }
   .user-menu {
     padding: 0 10px;
+    margin: 0;
+    width: 100px;
     li {
       display: inline-block;
     }
