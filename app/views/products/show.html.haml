@@ -51,7 +51,7 @@
               - colorclass = c[0]['title'].parameterize
               -if c[0]['material'].present?
                 #colorbox{ class: "color_#{colorclass}" }
-                  = image_tag '/assets/structural/'+c[0]['material'], title: "#{c[0]['title']}"
+                  = image_tag 'structural/'+c[0]['material'], title: "#{c[0]['title']}"
               -elsif c[0]['hex1'].present? && c[0]['hex2'].present?
                 #colorbox{ class: "color_#{colorclass}", style: "background: linear-gradient(to right bottom, #{c[0]['hex1']} 50%, #{c[0]['hex2']} 50%);", title: "#{c[0]['title']}" }
               -else c[0]['hex1'].present? and !c[0]['hex2'].present?

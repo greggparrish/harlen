@@ -6,13 +6,6 @@
     @include centerobj;
     padding: 30px;
   }
-  .devise-links {
-    @include centerobj;
-    text-align: center;
-    a {
-      padding: 10px 0;
-    }
-  }
   .btn.submit {
     padding: 8px;
     @include centerobj;

@@ -1,0 +1,10 @@
+#auth {
+  background: $white;
+  .devise-links {
+    @include centerobj;
+    text-align: center;
+    a {
+      padding: 10px 0;
+    }
+  }
+}

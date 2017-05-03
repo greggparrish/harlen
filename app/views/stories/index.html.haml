@@ -27,9 +27,11 @@
                 %li.title
                   %h2= link_to s.title.upcase, story_path(s.slug)
                 %li.tagline= s.tagline.truncate_words(10)
-                %li
-                  = link_to 'edit', edit_story_path(s.slug)
-                  = link_to 'delete', story_path(s.slug), method: :delete, data: { confirm: 'Are you sure?' } 
+                -if user_signed_in?
+                  -if current_user.try(:admin?)
+                    %li
+                      = link_to 'edit', edit_story_path(s.slug)
+                      = link_to 'delete', story_path(s.slug), method: :delete, data: { confirm: 'Are you sure?' } 
                 -if [0,7].include? index
                   %li.excerpt= excerpt(s.body)
       = paginate @stories
