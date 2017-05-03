@@ -1,7 +1,3 @@
-$('body').click ->
-  console.log 'clicked'
-  return
-
 $(document).on 'turbolinks:load', ->
   $('div#colorbox').click ->
     a = $(this).attr('class')

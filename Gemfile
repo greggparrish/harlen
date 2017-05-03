@@ -34,7 +34,6 @@ gem 'twitter'
 gem 'twitter-text'
 gem 'uglifier', '>= 1.3.0'
 
-
 group :development, :test do
   gem "rack-livereload"
   gem 'annotate'
@@ -59,6 +58,8 @@ end
 group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

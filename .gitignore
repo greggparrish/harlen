@@ -3,6 +3,7 @@
 *.sql
 *.gz
 capybara-*.html
+Capfile
 .rspec
 .capistrano
 /log
