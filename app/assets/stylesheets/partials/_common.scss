@@ -2,6 +2,8 @@ body {
   font: 100 16px $worksans;
   -webkit-font-smoothing: antialiased;  
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background: $black;
 }
 
 img {

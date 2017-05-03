@@ -1,4 +1,5 @@
 #collection {
+  background: $white;
 	.product-item {
 		position: relative;
 		.product-title {
@@ -28,16 +29,19 @@
 	}
 }
 
-
 #collection-item {
+  background: $white;
 	#image-set {
 		display: none;
 		&.active {
 			display: block;
 		}
 		#image-feature {
-			img {
-				@include centerobj;
+			img#image-main {
+        display: none;
+        &.active {
+				  @include centerobj;
+        }
 			}
 		}
 		#image-select {

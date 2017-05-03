@@ -4,49 +4,58 @@
 -else
   -prodcolor = @product.productimages.first.color.title.parameterize 
 
-#collection-item.container
-  %h1
-    = link_to 'COLLECTION', products_path
-    \:
-    = @product.title
-  %p#notice= notice
-  .row
-    -@product.productimages.each do |pi|
-      - activecolor = pi.color.title.parameterize == prodcolor ? ' active' : ''
-      #image-set{ class: "color_#{pi.color.title.parameterize}"+ activecolor }  
-        #image-feature.col-sm-12.col-md-7.col-md-push-3
-          = image_tag pi.front.lg, class: 'img-responsive'
-        #image-select.col-sm-12.col-md-2.col-md-push-3
-          #colorswitch{ class: "color_#{pi.color.title}" }
-            .col-xs-6.col-md-12.image-opt
-              = image_tag pi.front.thumb
-            .col-xs-6.col-md-12
-              = image_tag pi.side1.thumb
-            .col-xs-6.col-md-12
-              = image_tag pi.top.thumb
-            .col-xs-6.col-md-12
-              = image_tag pi.with_model.thumb
-    #infobox.col-sm-12.col-md-3.col-md-pull-9
-      -if user_signed_in?
-        -if current_user.try(:admin?)
-          = link_to 'Edit', edit_product_path(@product)
-          \|
-          = link_to 'Delete', product_path(@product.slug), method: :delete, data: { confirm: 'Are you sure?' } 
-      %p.price
-        $#{number_with_precision(@product.price, precision: 2)}
-      #colorchoice
-        %p AVAILABLE IN
-        - colorcount = @prod_colors.count == 3 ? '4' : '6'
-        -@prod_colors.each do |c|
-          %div{class: "col-xs-#{colorcount}" }
-            - colorclass = c[0]['title'].parameterize
-            -if c[0]['material'].present?
-              #colorbox{ class: "color_#{colorclass}" }
-                = image_tag '/assets/structural/'+c[0]['material'], title: "#{c[0]['title']}"
-            -elsif c[0]['hex1'].present? && c[0]['hex2'].present?
-              #colorbox{ class: "color_#{colorclass}", style: "background: linear-gradient(to right bottom, #{c[0]['hex1']} 50%, #{c[0]['hex2']} 50%);", title: "#{c[0]['title']}" }
-            -else c[0]['hex1'].present? and !c[0]['hex2'].present?
-              #colorbox{ class: "color_#{colorclass}", style: "background: #{c[0]['hex1']}", title: "#{c[0]['title']}" }
-      .description
-        %p= @product.description
+#collection-item
+  .container
+    %h1
+      = link_to 'COLLECTION', products_path
+      \:
+      = @product.title
+    %p#notice= notice
+    .row
+      -@product.productimages.each do |pi|
+        - activecolor = pi.color.title.parameterize == prodcolor ? ' active' : ''
+        - itemcolor = pi.color.title.parameterize
+        #image-set{ class: "color_#{itemcolor}"+ activecolor }
+
+          #image-feature.col-sm-12.col-md-7.col-md-push-3
+            = image_tag pi.front.lg, id: "image-main", class: "#{itemcolor}_front"+' active'
+            = image_tag pi.side1.lg, id: "image-main", class:"#{itemcolor}_side1"
+            = image_tag pi.top.lg, id: "image-main", class:"#{itemcolor}_top"
+            = image_tag pi.with_model.lg, id: "image-main", class:"#{itemcolor}_model"
+
+
+          #image-select.col-sm-12.col-md-2.col-md-push-3
+            #colorswitch{ class: "color_#{pi.color.title.parameterize}" }
+              .col-xs-6.col-md-12.image-opt
+                = image_tag pi.front.thumb, id: "image-option",class: "#{itemcolor}_front"
+              .col-xs-6.col-md-12
+                = image_tag pi.side1.thumb, id: "image-option",class: "#{itemcolor}_side1"
+              .col-xs-6.col-md-12
+                = image_tag pi.top.thumb, id: "image-option",class: "#{itemcolor}_top"
+              .col-xs-6.col-md-12
+                = image_tag pi.with_model.thumb, id: "image-option",class: "#{itemcolor}_model"
+
+      #infobox.col-sm-12.col-md-3.col-md-pull-9
+        -if user_signed_in?
+          -if current_user.try(:admin?)
+            = link_to 'Edit', edit_product_path(@product)
+            \|
+            = link_to 'Delete', product_path(@product.slug), method: :delete, data: { confirm: 'Are you sure?' } 
+        %p.price
+          $#{number_with_precision(@product.price, precision: 2)}
+        #colorchoice
+          %p AVAILABLE IN
+          - colorcount = @prod_colors.count == 3 ? '4' : '6'
+          -@prod_colors.each do |c|
+            %div{class: "col-xs-#{colorcount}" }
+              - colorclass = c[0]['title'].parameterize
+              -if c[0]['material'].present?
+                #colorbox{ class: "color_#{colorclass}" }
+                  = image_tag '/assets/structural/'+c[0]['material'], title: "#{c[0]['title']}"
+              -elsif c[0]['hex1'].present? && c[0]['hex2'].present?
+                #colorbox{ class: "color_#{colorclass}", style: "background: linear-gradient(to right bottom, #{c[0]['hex1']} 50%, #{c[0]['hex2']} 50%);", title: "#{c[0]['title']}" }
+              -else c[0]['hex1'].present? and !c[0]['hex2'].present?
+                #colorbox{ class: "color_#{colorclass}", style: "background: #{c[0]['hex1']}", title: "#{c[0]['title']}" }
+        .description
+          %p= @product.description
 

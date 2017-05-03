@@ -466,7 +466,8 @@ DEPENDENCIES
   brakeman
   bundler-audit
   byebug
-  capistrano-rails
+  capistrano (~> 3.6)
+  capistrano-rails (~> 1.2)
   capybara
   carrierwave (~> 1.0)
   ckeditor

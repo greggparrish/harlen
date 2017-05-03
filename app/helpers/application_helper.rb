@@ -27,4 +27,5 @@ module ApplicationHelper
   def get_tags(t)
     t.map(&:name.downcase).join(' ')
   end
+
 end
