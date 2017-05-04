@@ -1,4 +1,5 @@
 nav.navbar {
+  color: $lighter_grey;
   font-family: $worksans;
   font-size: 1.1em;
   background: $black;
@@ -6,21 +7,20 @@ nav.navbar {
   border-radius: 0;
   border-bottom: 1px solid $dark_grey;
   margin: 0;
-  ul.nav > ul.dropdown-menu {
-    li  {
-      a {
-        color: $lighter_grey;
-        &.active {
+  ul.nav  {
+    li, li.dropdown  {
+      background: none;
+      &.active a.nav-link, a.dropdown-toggle {
+          background-color: $black;
+        &:hover, &:active, &:focus {
+          background-color: $black;
         }
       }
-      &:hover, &:active, &:focus {
-        background-color: $black;
-      }
       &.active a {
-        background: $black;
+          background-color: $black;
         color: $red!important;
         &:hover {
-          background: $black;
+          background-color: $black;
         }
       }
     }
@@ -68,6 +68,12 @@ nav.navbar {
     opacity: 0;
     li {
       margin: 15px 0;
+      &.active a.nav-link {
+          background-color: $black;
+        &:hover, &:active, &:focus {
+          background-color: $black;
+        }
+      }
     }
   }
 
