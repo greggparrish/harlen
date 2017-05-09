@@ -18,6 +18,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_order
+    if !Order.current_user.id
+      Order.find(current_user.order_id)
+    else
+      Order.new
+    end
+  end
+
   protected
 
     def user_not_authorized

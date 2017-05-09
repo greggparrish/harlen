@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
     @products = Productimage.all.order(:product_id).group_by{|p| [p.front, p.product.title, p.product.slug, p.color.title] }
     @prods = Product.joins(:productimages).group("products.id", "productimages.color_id").order(:title)
     @colors = Color.all
+    @order_item = current_order.order_items.new
   end
 
   def show

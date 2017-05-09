@@ -60,6 +60,7 @@ group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-bundler'
+  gem 'capistrano-passenger'
   gem 'capistrano-rvm'
   gem 'web-console', '>= 3.3.0'
   gem 'spring'

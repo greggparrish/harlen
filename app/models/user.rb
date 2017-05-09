@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   enum role: [:client, :editor, :admin]
+  has_many :orders
+  has_many :order_items, through: :orders
   after_initialize :set_default_role, if: :new_record?
 
   def set_default_role

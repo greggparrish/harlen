@@ -16,11 +16,9 @@
             -if user_signed_in?
               -if current_user.try(:admin?)
                 = link_to ' (NEW)', new_story_path()
-        .row
-          - @stories.each_with_index do |s, index|
-            - tagclasses = get_tags(s.tags)
-
-            %div{ class: (index == 0 || index == 7 ? "col-xs-12 story feature #{tagclasses}" : "col-xs-12 col-md-4 story #{tagclasses}") }
+        - @stories.each_with_index do |s, index|
+          %div{ class: (index == 0 || index == 7 ? "col-xs-12 story feature" : "col-xs-12 col-md-4 story") }
+            .story-content
               = link_to image_tag(index == 0 || index == 7 ? s.image.banner : s.image.thumb), story_path(s.slug)
               %ul.list-unstyled.story-text
                 %li.date= s.created_at.strftime("%B #{s.created_at.day.ordinalize}, %Y")
