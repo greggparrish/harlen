@@ -1,11 +1,12 @@
 nav.navbar {
   color: $lighter_grey;
-  font-family: $worksans;
+  font-family: $catamaran;
   font-size: 1.1em;
   background: $black;
   border: 0;
   border-radius: 0;
   border-bottom: 1px solid $dark_grey;
+  letter-spacing: 1px;
   margin: 0;
   ul.nav  {
     li, li.dropdown  {

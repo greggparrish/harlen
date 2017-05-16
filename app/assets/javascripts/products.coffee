@@ -1,3 +1,12 @@
+setPrice = () ->
+  p = $('#image-set.active').attr('data-price') 
+  $('p#price').text('$'+p)
+  return
+
+$(document).ready ->
+  setPrice()
+  return
+
 $(document).on 'turbolinks:load', ->
   $('div#colorbox').click ->
     a = $(this).attr('class')
@@ -7,8 +16,9 @@ $(document).on 'turbolinks:load', ->
     $('#image-main ').removeClass 'active', 100
     $('#image-set.' + a).addClass 'active', 100
     $('#image-main.' + b + '_' + c).addClass 'active', 100
+    setPrice()
   $('img#image-option').click ->
     a = $(this).attr('class')
     $('#image-main ').removeClass 'active', 100
     $('#image-main.' + a).addClass 'active', 100
-
+    setPrice()

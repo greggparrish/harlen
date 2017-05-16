@@ -3,6 +3,9 @@
     = f.association :color, as: :radio_buttons
   = link_to_remove_association "remove image set below", f
   .form-group.row
+    .col-xs-12
+      = f.input :price
+  .simple_form_form-group.row
     .col-xs-2
       = image_tag(f.object.front.thumb) if f.object.front?
     .col-xs-10

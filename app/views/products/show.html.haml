@@ -15,7 +15,7 @@
       -@product.productimages.each do |pi|
         - activecolor = pi.color.title.parameterize == prodcolor ? ' active' : ''
         - itemcolor = pi.color.title.parameterize
-        #image-set{ class: "color_#{itemcolor}"+ activecolor }
+        #image-set{ class: "color_#{itemcolor}"+ activecolor, data: {  price: number_with_precision(pi.price, precision: 2) } }
 
           #image-feature.col-sm-12.col-md-7.col-md-push-3
             = image_tag pi.front.lg, id: "image-main", class: "#{itemcolor}_front"+' active'
@@ -41,8 +41,8 @@
             = link_to 'Edit', edit_product_path(@product)
             \|
             = link_to 'Delete', product_path(@product.slug), method: :delete, data: { confirm: 'Are you sure?' } 
-        %p.price
-          $#{number_with_precision(@product.price, precision: 2)}
+        %p#price
+
         #colorchoice
           %p AVAILABLE IN
           - colorcount = @prod_colors.count == 3 ? '4' : '6'

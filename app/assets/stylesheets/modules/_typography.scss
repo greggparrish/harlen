@@ -1,10 +1,10 @@
 /* PRIMARY BRANDING  */
 
-$worksans: 'Work Sans', sans-serif;
+$catamaran: 'Catamaran', sans-serif;
 $raleway: 'Raleway', sans-serif;
 $gentium: 'Gentium', serif;
 
-$headers: $worksans;
+$headers: $catamaran;
 $bodytext: $gentium;
 
 body {
@@ -22,7 +22,7 @@ a {
 }
 
 h1,h2,h3,h4,h5 {
-  font: 100 16px $worksans;
+  font: 100 16px $catamaran;
   text-align: center;
   text-transform: uppercase;
 }

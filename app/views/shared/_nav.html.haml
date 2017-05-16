@@ -2,7 +2,10 @@
   .container
     .navbar-header.navbar-right.pull-right.user-menu
       %ul.nav.navbar-nav.navbar-right
-        = nav_link (fa_icon 'shopping-bag'), '/cart'
+        -if user_signed_in?
+          = nav_link (fa_icon 'shopping-bag'), order_path(current_order)
+        -else
+          = nav_link (fa_icon 'shopping-bag'), new_user_session_path
         -if user_signed_in?
           = nav_link (fa_icon 'user-o'), edit_user_registration_path
         -else

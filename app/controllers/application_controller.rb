@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   after_filter :verify_authorized, except: :index, unless: :devise_controller?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  helper_method :current_order
 
   def after_sign_in_path_for(resource)
     edit_user_registration_path
@@ -19,10 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    if !Order.current_user.id
-      Order.find(current_user.order_id)
+    if current_user.orders.where(order_status_id: 1).exists?
+      current_user.orders.where(order_status_id: 1).first
     else
-      Order.new
+      current_user.orders.new
     end
   end
 

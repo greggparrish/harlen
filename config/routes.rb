@@ -1,21 +1,13 @@
 Rails.application.routes.draw do
-  get 'order_items/create'
-
-  get 'order_items/update'
-
-  get 'order_items/destroy'
-
-  get 'carts/show'
-
   #USERS
   devise_for :users
-  resources :users
 
   #CRUD  
+  resources :users
   resources :pressitems, path: 'press'
   resources :products, path: 'collection'
   resources :stories
-  resource :cart, only: [:show]
+  resource :order, only: [:show], path: 'cart'
   resources :order_items, only: [:create, :update, :destroy]
   mount Ckeditor::Engine => '/ckeditor'
 

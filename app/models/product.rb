@@ -6,6 +6,4 @@ class Product < ApplicationRecord
   has_many :order_items
   accepts_nested_attributes_for :productimages, reject_if: :all_blank, allow_destroy: true
 
-  default_scope { where(active: true) }
-
 end
